@@ -12,5 +12,5 @@ func _init():
 func _ready():
 	connect("area_entered", _on_area_entered)
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	emit_signal("transition_entered", destination_path, direction)

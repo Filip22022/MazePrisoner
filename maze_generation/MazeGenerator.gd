@@ -1,12 +1,13 @@
+class_name MazeGenerator
 extends TileMap
 
 var size: int = 11
 var rooms = []
 var ready_path = []
 var rng: RandomNumberGenerator
-var color_counter = 2
-var started = false
-var tick = 0
+var starting_cell: MazeRoom
+#var color_counter = 2
+#var tick = 0
 
 func _init():
 	rng = RandomNumberGenerator.new()
@@ -19,14 +20,41 @@ func _init():
 			room.x = i
 			room. y = j
 			rooms[i].append(room)
-			_visualize(room,0)
+			#_visualize(room,0)
 	
 	# Choose center cell as starting cell
-	var starting_cell = rooms[(size-1)/2][(size-1)/2]
-
+	self.starting_cell = rooms[(size-1)/2][(size-1)/2]
 	ready_path.append(starting_cell)
-	_visualize_ends(starting_cell)
+	#_visualize_ends(starting_cell)
+
+	
+func _maze_incomplete():
+	for i in range(size):
+		for j in range(size):
+			if rooms[i][j] not in ready_path:
+				return true
+	return false
+	
+#func _process(delta):
+	#if maze_incomplete():
+		#if tick == 20:
+			#tick = 0
+			#generate_new_path()
+			#
+		#else: 
+			#tick += 1
+			#
+	#_show_rooms()
+	
+func generate_maze():
+	while _maze_incomplete():
+		_generate_new_path()
 	var escape_cell = _random_escape_cell()
+	escape_cell.set_as_final()
+	return ready_path
+	
+func get_starting_room():
+	return self.starting_cell
 	
 func _random_escape_cell():
 	# Choose random edge cell as escape_cell
@@ -37,46 +65,24 @@ func _random_escape_cell():
 	_visualize_ends(escape_cell)
 	return escape_cell
 	
-func maze_incomplete():
-	for i in range(size):
-		for j in range(size):
-			if rooms[i][j] not in ready_path:
-				return true
-	return false
-	
-func _process(delta):
-	if maze_incomplete():
-		if tick == 20:
-			tick = 0
-			generate_new_path()
-			
-		else: 
-			tick += 1
-	else:
-		remove_colors()
-			
-	show_rooms()
-
-func generate_new_path():
+func _generate_new_path():
 	var current_cell = _random_new_cell()
 	var current_path = []
 	current_path.append(current_cell)
 	while true:
-		var new_cell = open_wall(current_cell)
+		var new_cell = _open_wall(current_cell)
 		if new_cell in ready_path:
 			current_path.append(new_cell)
-			color_path(current_path)
-			merge_path(current_path)
+			#_color_path(current_path)
+			_merge_path(current_path)
 			return
 		if new_cell in current_path:
-			erase_loop(current_path, new_cell)
+			_erase_loop(current_path, new_cell)
 			
 		current_cell = new_cell
 		current_path.append(current_cell)
 
-
-		
-func open_wall(cell):
+func _open_wall(cell):
 	var new_cell: MazeRoom = null
 	while new_cell == null:
 		match rng.randi_range(0,3):
@@ -98,27 +104,19 @@ func open_wall(cell):
 					new_cell = rooms[cell.x-1][cell.y]
 	return new_cell
 	
-func erase_loop(current_path, repeated_room):
+func _erase_loop(current_path, repeated_room):
 	var start = current_path.find(repeated_room)
 	for i in range(len(current_path), start, -1):
 		var popped_cell = current_path.pop_back()
 		#popped_cell.close_room()
-		popped_cell.set_color(0)
+		#popped_cell.set_color(0)
 	
-func merge_path(new_path):
+func _merge_path(new_path):
 	for i in range(len(new_path)-1):
 		var room = new_path[i]
 		room.connect_room(new_path[i+1])
 		ready_path.append(room)
-	
-func color_path(path): 
-	for cell in path:
-		cell.set_color(color_counter)
 		
-	color_counter += 1
-	if color_counter > 11:
-		color_counter = 2
-	
 func _random_new_cell():
 	var x = rng.randi_range(0,size-1) 
 	var y = rng.randi_range(0,size-1) 
@@ -130,15 +128,21 @@ func _random_new_cell():
 	var new_cell = rooms[x][y]
 	return new_cell
 	
+#func _color_path(path): 
+	##for cell in path:
+		##cell.set_color(color_counter)
+		#
+	#color_counter += 1
+	#if color_counter > 11:
+		#color_counter = 2
 	
-func show_rooms():
+func _show_rooms():
 	for row in rooms:
 		for room in row:
 			_visualize(room, room.color)
 			_visualize_walls(room)
 			
-			
-func remove_colors():
+func _remove_colors():
 	for row in rooms:
 		for room in row:
 			_visualize(room, 0)

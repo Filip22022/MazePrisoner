@@ -4,12 +4,6 @@ extends Node2D
 signal scene_change_requested(path: String, direction: Room_Directions.Direction)
 
 var entered_from: Room_Directions.Direction
-
-func spawn_player():
-	var p = load("res://player.tscn")
-	var player = p.instantiate()
-	player.position = $PlayerSpawn.position
-	add_child(player)
 	
 func initialize(connections: Dictionary = {}):
 	if len(connections) > 0:

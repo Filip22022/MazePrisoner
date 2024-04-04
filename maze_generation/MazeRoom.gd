@@ -7,6 +7,7 @@ var room_scene_path: String
 var connected_rooms = {}
 var walls_id = 15
 var color = 0
+var is_final = false
 
 func connect_room(other_room):
 	var side = check_neighbor_side(other_room)
@@ -36,6 +37,9 @@ func set_color(color):
 func close_room():
 	self.walls_id = 0
 	
+func set_as_final():
+	self.is_final = true
+	
 func check_neighbor_side(r2):
 	if (self.x - r2.x == -1 && self.y == r2.y):
 		return Room_Directions.Direction.Right
@@ -47,4 +51,4 @@ func check_neighbor_side(r2):
 		return Room_Directions.Direction.Down
 
 func get_scene_path():
-	room_scene_path = Rooms.get_room(self.walls_id)
+	room_scene_path = Rooms.get_room_path(self.walls_id)
