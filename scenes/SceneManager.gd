@@ -21,3 +21,7 @@ func _deferred_change_scene(scene_path: String, direction: Room_Directions.Direc
 	current_scene.scene_change_requested.connect(change_scene)
 	current_scene.entered_from = Room_Directions.opposite(direction)
 	%Player.position = current_scene.get_player_spawn()
+#
+#func change_room();
+	#change_scene(room)
+	#current_scene.initialize(room.connections)

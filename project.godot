@@ -82,6 +82,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Room_Directions="*res://autoloads/directions.gd"
+Rooms="*res://autoloads/rooms.gd"
 
 [display]
 
