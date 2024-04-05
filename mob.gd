@@ -8,8 +8,8 @@ func _ready():
 	$Slime.play_walk()
 
 func _physics_process(delta):
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 300
+	var Directions.Direction = global_position.Directions.Direction_to(player.global_position)
+	velocity = Directions.Direction * 300
 	
 	move_and_slide()
 	

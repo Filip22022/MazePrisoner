@@ -80,7 +80,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
-Room_Directions="*res://autoloads/directions.gd"
+Directions="*res://autoloads/directions.gd"
 Rooms="*res://autoloads/rooms.gd"
 
 [display]

@@ -1,4 +1,3 @@
-class_name Directions
 extends Node
 
 enum Direction {
@@ -8,7 +7,7 @@ enum Direction {
 	Left = 3,
 }
 
-static func opposite(dir: Direction):
+func opposite(dir: Direction):
 	match dir:
 		Direction.Up:
 			return Direction.Down

@@ -107,7 +107,8 @@ func _open_wall(cell):
 func _erase_loop(current_path, repeated_room):
 	var start = current_path.find(repeated_room)
 	for i in range(len(current_path), start, -1):
-		var popped_cell = current_path.pop_back()
+		current_path.pop_back()
+		#var popped_cell = current_path.pop_back()
 		#popped_cell.close_room()
 		#popped_cell.set_color(0)
 	
