@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://m7d62ap5jamu"]
 
-[ext_resource type="Script" path="res://scenes/rooms/room0.gd" id="1_3icsd"]
+[ext_resource type="Script" path="res://scenes/Scene.gd" id="1_kvcgj"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_eu1x7"]
 [ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_86rd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anhal"]
 size = Vector2(86.5, 68)
 
-[node name="Room2" type="Node2D"]
+[node name="Room0" type="Node2D"]
 z_index = -10
 position = Vector2(173, 130)
-script = ExtResource("1_3icsd")
+script = ExtResource("1_kvcgj")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -37,7 +37,6 @@ position = Vector2(-136, 32)
 [node name="TransitionAreaTop" type="Area2D" parent="."]
 position = Vector2(67, -130)
 script = ExtResource("3_86rd5")
-destination_path = "res://scenes/rooms/one_door/room_one_door.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaTop"]
 position = Vector2(-1, -1)
@@ -46,7 +45,6 @@ shape = SubResource("RectangleShape2D_anhal")
 [node name="TransitionAreaRight" type="Area2D" parent="."]
 position = Vector2(339, 30)
 script = ExtResource("3_86rd5")
-destination_path = "res://scenes/rooms/three_door/room_three_doors_up.tscn"
 direction = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaRight"]
@@ -55,7 +53,6 @@ shape = SubResource("RectangleShape2D_anhal")
 [node name="TransitionAreaDown" type="Area2D" parent="."]
 position = Vector2(67, 230)
 script = ExtResource("3_86rd5")
-destination_path = "res://scenes/rooms/four_door/room_four_doors.tscn"
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaDown"]
@@ -66,7 +63,6 @@ position = Vector2(-213, 30)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_86rd5")
-destination_path = "res://scenes/rooms/three_door/room_three_doors_up.tscn"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaLeft"]

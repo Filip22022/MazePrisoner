@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcmgu0winwcva"]
 
-[ext_resource type="Script" path="res://scenes/rooms/room15.gd" id="1_axgnv"]
+[ext_resource type="Script" path="res://scenes/Scene.gd" id="1_oq14r"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_ulieo"]
 [ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_y5hjp"]
 
@@ -10,7 +10,7 @@ size = Vector2(62.75, 55)
 [node name="Room15" type="Node2D"]
 z_index = -10
 position = Vector2(174, 132)
-script = ExtResource("1_axgnv")
+script = ExtResource("1_oq14r")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -10

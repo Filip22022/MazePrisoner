@@ -4,14 +4,15 @@ extends Node2D
 
 var current_scene: Scene = null
 var rooms = []
-var start: MazeRoom
+var current_room: MazeRoom
+var player
 
 func _ready():
 	#change_scene("res://scenes/rooms/room15.tscn", Room_Directions.Direction.Down)
 	current_scene = $StartMenu
 	current_scene.scene_change_requested.connect(start_game)
 	self.rooms = $MazeGenerator.generate_maze()
-	self.start = $MazeGenerator.get_starting_room()
+	self.current_room = $MazeGenerator.get_starting_room()
 
 func change_scene(scene_path: String, direction: Room_Directions.Direction):
 	call_deferred("_deferred_change_scene", scene_path, direction)
@@ -27,21 +28,21 @@ func _deferred_change_scene(scene_path: String, direction: Room_Directions.Direc
 	
 	current_scene.scene_change_requested.connect(change_scene)
 	current_scene.entered_from = Room_Directions.opposite(direction)
-	if %Player:
-		%Player.position = current_scene.get_player_spawn()
+	spawn_player(current_scene.get_player_spawn())
 	
 func start_game(scene_path: String, direction: Room_Directions.Direction):
-	var path = self.start.get_scene_path()
-	print(path)
-	path = path if path else scene_path
+	var path = self.current_room.get_scene_path()
 	change_scene(path, direction)
 	call_deferred("spawn_player")
 	
+func spawn_player(position):
+	if not self.player:
+		create_player()
+	player.position = position
 	
-func spawn_player():
+func create_player():
 	var p = load("res://player.tscn")
-	var player = p.instantiate()
-	player.position = current_scene.get_player_spawn()
+	self.player = p.instantiate()
 	add_child(player)
 #
 #func change_room();

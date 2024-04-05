@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://crbvodal5mw48"]
 
-[ext_resource type="Script" path="res://scenes/rooms/room3.gd" id="1_r3bjj"]
+[ext_resource type="Script" path="res://scenes/Scene.gd" id="1_3rya6"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_1638v"]
 [ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_12l5l"]
 
@@ -10,7 +10,7 @@ size = Vector2(86.5, 68)
 [node name="Room3" type="Node2D"]
 z_index = -10
 position = Vector2(173, 130)
-script = ExtResource("1_r3bjj")
+script = ExtResource("1_3rya6")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -38,7 +38,6 @@ position = Vector2(-136, 32)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("3_12l5l")
-destination_path = "res://scenes/rooms/three_door/room_three_doors_up.tscn"
 direction = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaLeft"]
@@ -47,7 +46,6 @@ shape = SubResource("RectangleShape2D_anhal")
 
 [node name="TransitionAreaDown" type="Area2D" parent="."]
 script = ExtResource("3_12l5l")
-destination_path = "res://scenes/rooms/four_door/room_four_doors.tscn"
 direction = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaDown"]

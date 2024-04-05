@@ -51,4 +51,6 @@ func check_neighbor_side(r2):
 		return Room_Directions.Direction.Down
 
 func get_scene_path():
-	room_scene_path = Rooms.get_room_path(self.walls_id)
+	if not self.room_scene_path:
+		self.room_scene_path = Rooms.get_room_path(self.walls_id)
+	return self.room_scene_path 

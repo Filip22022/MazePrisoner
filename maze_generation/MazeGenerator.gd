@@ -62,7 +62,7 @@ func _random_escape_cell():
 	var escape_coordinates = [rng.randi_range(0, size-1),bounds[rng.randi_range(0,1)]]
 	var x = rng.randi_range(0,1)
 	var escape_cell = rooms[escape_coordinates[x]][escape_coordinates[1-x]]
-	_visualize_ends(escape_cell)
+	#_visualize_ends(escape_cell)
 	return escape_cell
 	
 func _generate_new_path():
