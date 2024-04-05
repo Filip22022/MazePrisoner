@@ -1,7 +1,7 @@
 class_name Scene
 extends Node2D
 
-signal scene_change_requested(direction: Directions.Direction)
+signal room_change_requested(direction: Directions.Direction)
 
 var entered_from: Directions.Direction
 
@@ -9,7 +9,7 @@ func initialize(entered_from: Directions.Direction):
 	self.entered_from = entered_from
 
 func _on_transition_area_transition_entered(direction: Directions.Direction):
-	scene_change_requested.emit(direction)
+	room_change_requested.emit(direction)
 
 func get_player_spawn():
 	match self.entered_from:
