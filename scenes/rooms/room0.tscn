@@ -29,7 +29,7 @@ position = Vector2(68, -68)
 position = Vector2(264, 35)
 
 [node name="PlayerSpawnDown" type="Marker2D" parent="."]
-position = Vector2(71, 178)
+position = Vector2(71, 158)
 
 [node name="PlayerSpawnLeft" type="Marker2D" parent="."]
 position = Vector2(-136, 32)

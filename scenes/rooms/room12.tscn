@@ -29,7 +29,7 @@ position = Vector2(68, -68)
 position = Vector2(264, 35)
 
 [node name="PlayerSpawnDown" type="Marker2D" parent="."]
-position = Vector2(71, 178)
+position = Vector2(72, 161)
 
 [node name="PlayerSpawnLeft" type="Marker2D" parent="."]
 position = Vector2(-136, 32)
@@ -37,7 +37,6 @@ position = Vector2(-136, 32)
 [node name="TransitionAreaTop" type="Area2D" parent="."]
 position = Vector2(67, -130)
 script = ExtResource("3_tn5sd")
-destination_path = "res://scenes/rooms/one_door/room_one_door.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaTop"]
 position = Vector2(-1, -1)
@@ -46,7 +45,6 @@ shape = SubResource("RectangleShape2D_anhal")
 [node name="TransitionAreaRight" type="Area2D" parent="."]
 position = Vector2(339, 30)
 script = ExtResource("3_tn5sd")
-destination_path = "res://scenes/rooms/three_door/room_three_doors_up.tscn"
 direction = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionAreaRight"]

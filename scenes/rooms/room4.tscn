@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2eig0y8ygpfu"]
 
-[ext_resource type="Script" path="res://scenes/rooms/room4.gd" id="1_ryw6s"]
+[ext_resource type="Script" path="res://scenes/Scene.gd" id="1_ryw6s"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_26mua"]
 [ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_850wu"]
 
@@ -29,7 +29,7 @@ position = Vector2(68, -68)
 position = Vector2(264, 35)
 
 [node name="PlayerSpawnDown" type="Marker2D" parent="."]
-position = Vector2(71, 178)
+position = Vector2(71, 156)
 
 [node name="PlayerSpawnLeft" type="Marker2D" parent="."]
 position = Vector2(-136, 32)

@@ -1,5 +1,9 @@
 extends Scene
 
+func initialize(entered_from: Directions.Direction, connections: Dictionary):
+	super.initialize(entered_from, connections)
+	self.open_doors(connections) 
+
 func open_doors(directions):
 	for direction in directions.keys():
 		var door = get_door(direction)

@@ -20,7 +20,7 @@ func _deferred_change_room(direction: Directions.Direction):
 	
 	_deferred_change_scene()
 	
-	self.current_scene.initialize(Directions.opposite(direction))
+	self.current_scene.initialize(Directions.opposite(direction), self.current_room.connected_rooms)
 	spawn_player(self.current_scene.get_player_spawn())
 	
 	
@@ -48,8 +48,8 @@ func start_game():
 	call_deferred("_deferred_start_game")
 	
 func _deferred_start_game():
-	self.current_scene.open_doors(self.current_room.connected_rooms)
 	spawn_player(self.current_scene.get_player_spawn())
+	self.current_scene.initialize(Directions.Direction.Up, self.current_room.connected_rooms)
 	
 func spawn_player(player_position):
 	if not self.player:
