@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsq8kcfy5acg5"]
+
+[ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_bhxf0"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_bhxf0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 144.0
+offset_top = 183.0
+offset_right = 348.0
+offset_bottom = 443.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfupgidqu24r1"]
+[gd_scene load_steps=5 format=3 uid="uid://bfupgidqu24r1"]
 
-[ext_resource type="PackedScene" uid="uid://bjtvug2n8i8vt" path="res://player.tscn" id="1_3mhmv"]
 [ext_resource type="Script" path="res://game.gd" id="1_hxirs"]
 [ext_resource type="Script" path="res://scenes/SceneManager.gd" id="3_jjlmg"]
+[ext_resource type="PackedScene" uid="uid://bsq8kcfy5acg5" path="res://scenes/menus/start_menu.tscn" id="4_e1sqp"]
+[ext_resource type="Script" path="res://maze_generation/MazeGenerator.gd" id="4_kpke4"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(1, 0)
 script = ExtResource("1_hxirs")
 
-[node name="Player" parent="." instance=ExtResource("1_3mhmv")]
-unique_name_in_owner = true
-position = Vector2(287, 163)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_speed = 30.0
-
 [node name="SceneManager" type="Node2D" parent="."]
 script = ExtResource("3_jjlmg")
+
+[node name="StartMenu" parent="SceneManager" instance=ExtResource("4_e1sqp")]
+position = Vector2(2, 2)
+
+[node name="MazeGenerator" type="TileMap" parent="SceneManager"]
+format = 2
+script = ExtResource("4_kpke4")
