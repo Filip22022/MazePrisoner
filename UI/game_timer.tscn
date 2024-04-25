@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8xthppp1k7fo"]
 
-[ext_resource type="Script" path="res://UI/timer_hud.gd" id="1_3xqc7"]
+[ext_resource type="Script" path="res://UI/game_timer.gd" id="1_3xqc7"]
 
-[node name="TimerHUD" type="Control"]
+[node name="GameTimer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,3 +20,5 @@ offset_bottom = 64.0
 scale = Vector2(1.44, 1.28)
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="emit_timeout"]

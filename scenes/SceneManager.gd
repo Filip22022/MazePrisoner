@@ -9,7 +9,6 @@ var player
 
 func _ready():
 	current_scene = $StartMenu
-	current_scene.start_game.connect(start_game)
 	
 func change_room(direction: Directions.Direction):
 	call_deferred("_deferred_change_room", direction)
@@ -57,6 +56,6 @@ func spawn_player(player_position):
 	player.position = player_position
 	
 func _create_player():
-	var p = load("res://player.tscn")
+	var p = load("res://player/player.tscn")
 	self.player = p.instantiate()
 	add_child(player)
