@@ -17,10 +17,6 @@ func _physics_process(delta):
 		velocity *= 5 * pow(dash.time_left,1)
 	move_and_slide()
 	
-	if velocity.length() > 0.0:
-		%HappyBoo.play_walk_animation()
-	else:
-		%HappyBoo.play_idle_animation()
 			
 func take_damage(amount: float):
 	_change_health(-amount)
