@@ -2,22 +2,26 @@ extends CharacterBody2D
 
 signal health_depleted
 
+@onready var dash = $dash_timer
+const dash_length = 0.5
+
 func _physics_process(delta):
+	
+	if ! is_dashing():
+		if Input.is_action_just_pressed("Dash"):
+			start_dash()
+	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * PlayerInfo.speed
+	if is_dashing():
+		velocity *= 5 * pow(dash.time_left,1)
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
 		%HappyBoo.play_walk_animation()
 	else:
 		%HappyBoo.play_idle_animation()
-		
-		const DAMAGE_RATE = 15.0
-		var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-		if overlapping_mobs.size() > 0:
-			take_damage(DAMAGE_RATE * overlapping_mobs.size() * delta)
 			
-				
 func take_damage(amount: float):
 	_change_health(-amount)
 	
@@ -30,4 +34,19 @@ func _change_health(amount: float):
 	if PlayerInfo.health <= 0.0:
 		health_depleted.emit()
 	
+func change_speed(amount: float):
+	PlayerInfo.speed += amount
+	if PlayerInfo.speed < 50.0:
+		PlayerInfo.speed = 50.0
+		
+func change_player_damage(amount: float):
+	PlayerInfo.damage += amount
+	if PlayerInfo.damage < 0.1:
+		PlayerInfo.damage = 0.1
 
+func start_dash():
+	dash.wait_time = dash_length
+	dash.start()
+	
+func is_dashing():
+	return !dash.is_stopped()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjtvug2n8i8vt"]
 
-[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_eb2k7"]
-[ext_resource type="Script" path="res://player.gd" id="1_enbbe"]
-[ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword.tscn" id="4_mso4a"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_g7hg3"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="2_m8mdx"]
+[ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword.tscn" id="3_brsre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfuw2"]
 size = Vector2(72.0556, 44.3334)
@@ -32,9 +32,9 @@ height = 53.3333
 position = Vector2(57, 71)
 scale = Vector2(0.6, 0.6)
 platform_floor_layers = 4294901760
-script = ExtResource("1_enbbe")
+script = ExtResource("1_g7hg3")
 
-[node name="HappyBoo" parent="." instance=ExtResource("1_eb2k7")]
+[node name="HappyBoo" parent="." instance=ExtResource("2_m8mdx")]
 unique_name_in_owner = true
 position = Vector2(4, 31)
 scale = Vector2(0.6, 0.6)
@@ -69,7 +69,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Sword" parent="." instance=ExtResource("4_mso4a")]
+[node name="Sword" parent="." instance=ExtResource("3_brsre")]
 position = Vector2(23.3333, -1.66667)
 scale = Vector2(0.6, 0.6)
 
@@ -84,3 +84,6 @@ shape = SubResource("CapsuleShape2D_5xh3s")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_speed = 30.0
+
+[node name="dash_timer" type="Timer" parent="."]
+one_shot = true
