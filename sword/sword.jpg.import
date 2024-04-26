@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhapxq8y8ow57"
-path="res://.godot/imported/square_lower_leg.png-313909793abe38b44566c8e252c075e0.ctex"
+uid="uid://b7hlfq0kofse5"
+path="res://.godot/imported/sword.jpg-d2d20813c273b6d220efca287fcd134a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/happy_boo/square_lower_leg.png"
-dest_files=["res://.godot/imported/square_lower_leg.png-313909793abe38b44566c8e252c075e0.ctex"]
+source_file="res://sword/sword.jpg"
+dest_files=["res://.godot/imported/sword.jpg-d2d20813c273b6d220efca287fcd134a.ctex"]
 
 [params]
 

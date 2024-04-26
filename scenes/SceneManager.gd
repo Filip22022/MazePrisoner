@@ -69,6 +69,6 @@ func spawn_player(player_position):
 	
 	
 func _create_player():
-	var p = load("res://player.tscn")
+	var p = load("res://player/player.tscn")
 	self.player = p.instantiate()
 	add_child(player)
