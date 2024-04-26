@@ -2,6 +2,7 @@ class_name Scene
 extends Node2D
 
 signal room_change_requested(direction: Directions.Direction)
+signal scene_change_requested(scene_path: String)
 
 var entered_from: Directions.Direction
 
@@ -10,6 +11,11 @@ func initialize(entered_from: Directions.Direction, connections: Dictionary):
 
 func _on_transition_area_transition_entered(direction: Directions.Direction):
 	room_change_requested.emit(direction)
+
+
+func request_scene_change(scene_path: String):
+	scene_change_requested.emit(scene_path)
+	
 
 func get_player_spawn():
 	match self.entered_from:
@@ -29,3 +35,10 @@ func get_player_spawn():
 			if self.has_node("PlayerSpawnLeft"):
 				var spawn: Marker2D = self.get_node("PlayerSpawnLeft")
 				return spawn.global_position
+
+func spawn_exit():
+	var exit = load("res://scenes/objects/exit/maze_exit.tscn").instantiate()
+	self.add_child(exit)
+	exit.position = Vector2i(0,0)
+	exit.scene_path = "res://scenes/menus/start_menu.tscn"
+	exit.transition_entered.connect(request_scene_change)

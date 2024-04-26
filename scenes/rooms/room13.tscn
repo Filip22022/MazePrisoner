@@ -2,18 +2,17 @@
 
 [ext_resource type="Script" path="res://scenes/Scene.gd" id="1_pe8hc"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_xxflb"]
-[ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_sxjpx"]
+[ext_resource type="Script" path="res://scenes/objects/room_transition_area.gd" id="3_sxjpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anhal"]
 size = Vector2(86.5, 68)
 
 [node name="Room13" type="Node2D"]
 z_index = -10
-position = Vector2(173, 130)
 script = ExtResource("1_pe8hc")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-64, -32)
 tile_set = ExtResource("2_xxflb")
 format = 2
 layer_0/name = "Ground"
@@ -23,19 +22,19 @@ layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(327674, 262145, 2, 393210, 262145, 2, 262153, 524289, 2, 327689, 524289, 3, 458746, 262145, 4, 458747, 393217, 4, 458748, 393217, 4, 458751, 393217, 4, 393216, 393217, 4, 393219, 393217, 4, 393220, 393217, 4, 393223, 393217, 4, 393224, 393217, 4, 393225, 524289, 4, 262138, 262145, 2, 196617, 524289, 2, 196602, 262145, 2, 131081, 524289, 2, -196614, 262145, 2, -131078, 262145, 2, -65542, 262145, 2, -6, 262145, 2, -196613, 327681, 2, -196612, 393217, 2, -262137, 393217, 2, -262136, 458753, 2, -262135, 524289, 3, -196599, 524289, 2, -131063, 524289, 2, -65527, 524289, 2, -262150, 262145, 1, -262149, 327681, 1, -262148, 393217, 1, -327673, 393217, 1, -327672, 458753, 1, -327671, 524289, 1, -262145, 393217, 1, -196609, 393217, 2, -262147, 393217, 1, -196611, 393217, 2, -262146, 393217, 1, -196610, 393217, 2, -327676, 393217, 1, -262140, 393217, 2, -327675, 393217, 1, -262139, 393217, 2, -327674, 393217, 1, -262138, 393217, 2, -327680, 393217, 1, -327677, 393217, 1, -262141, 393217, 2, -262144, 393217, 2, 393222, 393217, 4, 393221, 393217, 4, 458750, 393217, 4, 458749, 393217, 4, 65530, 262145, 2, 131066, 262145, 2, -327679, 393217, 1, -262143, 393217, 2, -327678, 393217, 1, -262142, 393217, 2, 393217, 393217, 4, 393218, 393217, 4)
 
 [node name="PlayerSpawnTop" type="Marker2D" parent="."]
-position = Vector2(68, -68)
+position = Vector2(3, -100)
 
 [node name="PlayerSpawnRight" type="Marker2D" parent="."]
-position = Vector2(264, 35)
+position = Vector2(199, 3)
 
 [node name="PlayerSpawnDown" type="Marker2D" parent="."]
-position = Vector2(69, 159)
+position = Vector2(4, 127)
 
 [node name="PlayerSpawnLeft" type="Marker2D" parent="."]
-position = Vector2(-136, 32)
+position = Vector2(-201, 0)
 
 [node name="TransitionAreaRight" type="Area2D" parent="."]
-position = Vector2(339, 30)
+position = Vector2(274, -2)
 script = ExtResource("3_sxjpx")
 direction = 1
 

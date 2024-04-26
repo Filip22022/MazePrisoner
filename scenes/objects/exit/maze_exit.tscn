@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://jvxa68m6nlm"]
+
+[ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="1_k7te1"]
+[ext_resource type="Texture2D" uid="uid://djf0fwsvotr7y" path="res://scenes/objects/exit/maze_exit.png" id="2_i7ayt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6s44"]
+radius = 14.0
+
+[node name="MazeExit" type="Area2D"]
+scale = Vector2(2.2, 2.2)
+script = ExtResource("1_k7te1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m6s44")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_i7ayt")

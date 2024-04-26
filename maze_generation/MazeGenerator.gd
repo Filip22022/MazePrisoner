@@ -1,7 +1,7 @@
 class_name MazeGenerator
 extends TileMap
 
-var size: int = 11
+var size: int = 3
 var rooms = []
 var ready_path = []
 var rng: RandomNumberGenerator
@@ -11,7 +11,11 @@ var starting_cell: MazeRoom
 
 func _init():
 	rng = RandomNumberGenerator.new()
+
+func _initialize():
 	rng.randomize()
+	ready_path = []
+	rooms = []
 	
 	for i in range(0, size):
 		rooms.append([])
@@ -47,6 +51,7 @@ func _maze_incomplete():
 	#_show_rooms()
 	
 func generate_maze():
+	_initialize()
 	while _maze_incomplete():
 		_generate_new_path()
 	var escape_cell = _random_escape_cell()

@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/Scene.gd" id="1_oq14r"]
 [ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_ulieo"]
-[ext_resource type="Script" path="res://scenes/objects/transition_area.gd" id="3_y5hjp"]
+[ext_resource type="Script" path="res://scenes/objects/room_transition_area.gd" id="3_y5hjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj2m0"]
 size = Vector2(62.75, 55)
 
 [node name="Room15" type="Node2D"]
 z_index = -10
-position = Vector2(174, 132)
 script = ExtResource("1_oq14r")
 
 [node name="TileMap" type="TileMap" parent="."]

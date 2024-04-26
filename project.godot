@@ -82,6 +82,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 Directions="*res://autoloads/directions.gd"
 Rooms="*res://autoloads/rooms.gd"
+PlayerInfo="*res://autoloads/player_info.gd"
 
 [display]
 
