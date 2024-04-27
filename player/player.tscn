@@ -71,11 +71,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-3.33333, -1.66667)
 scale = Vector2(0.6, 0.6)
 
-[node name="AreaTracker" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+[node name="TransitionTriggerArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTracker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionTriggerArea"]
 position = Vector2(-1.66666, 0)
 shape = SubResource("CapsuleShape2D_5xh3s")
 
