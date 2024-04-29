@@ -9,3 +9,5 @@ static func get_room_path(doors: int):
 	
 	return path
 	
+static func get_final_room_path():
+	return "res://scenes/rooms/final room/final_room.tscn"
