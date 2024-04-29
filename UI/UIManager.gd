@@ -10,3 +10,6 @@ func start_game():
 	timer.show()
 	timer.start(3)
 
+func game_over():
+	timer.stop()
+	timer.hide()
