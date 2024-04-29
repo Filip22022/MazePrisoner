@@ -36,9 +36,7 @@ func get_player_spawn():
 				var spawn: Marker2D = self.get_node("PlayerSpawnLeft")
 				return spawn.global_position
 
-func spawn_exit():
-	var exit = load("res://scenes/objects/exit/maze_exit.tscn").instantiate()
-	self.add_child(exit)
-	exit.position = Vector2i(0,0)
-	exit.scene_path = "res://scenes/menus/start_menu.tscn"
-	exit.transition_entered.connect(request_scene_change)
+#func spawn_exit():
+	#var exit = load("res://scenes/objects/exit/maze_exit.tscn").instantiate()
+	#self.add_child(exit)
+	#exit.position = Vector2i(0,0)

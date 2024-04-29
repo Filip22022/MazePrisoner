@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjtvug2n8i8vt"]
+[gd_scene load_steps=10 format=3 uid="uid://bjtvug2n8i8vt"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_g7hg3"]
 [ext_resource type="Texture2D" uid="uid://bl0syrxdooqvf" path="res://player/player_sprite.png" id="2_3hb6n"]
 [ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword.tscn" id="3_brsre"]
+[ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_y2d3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfuw2"]
 size = Vector2(108.333, 44.3334)
@@ -46,7 +47,8 @@ shape = SubResource("RectangleShape2D_mfuw2")
 unique_name_in_owner = true
 scale = Vector2(0.6, 0.6)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
+script = ExtResource("3_y2d3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-2.77778, -2.38419e-06)
@@ -71,11 +73,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-3.33333, -1.66667)
 scale = Vector2(0.6, 0.6)
 
-[node name="AreaTracker" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+[node name="TransitionTriggerArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTracker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionTriggerArea"]
 position = Vector2(-1.66666, 0)
 shape = SubResource("CapsuleShape2D_5xh3s")
 

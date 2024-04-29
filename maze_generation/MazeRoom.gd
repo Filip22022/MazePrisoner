@@ -39,6 +39,7 @@ func close_room():
 	
 func set_as_final():
 	self.is_final = true
+	self.room_scene_path = Rooms.get_final_room_path()
 	
 func check_neighbor_side(r2):
 	if (self.x - r2.x == -1 && self.y == r2.y):

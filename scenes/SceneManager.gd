@@ -1,6 +1,8 @@
 class_name SceneManager
 extends Node2D
 
+signal player_death
+signal game_won
 
 var current_scene: Scene = null
 var rooms = []
@@ -10,8 +12,15 @@ var player
 func _ready():
 	current_scene = $StartMenu
 	
+func game_over():
+	_deferred_change_scene("res://scenes/menus/start_menu.tscn")
+	current_scene.start_game.connect(self.get_parent().start_game)
+	reset_player()
+	
+	
 func change_room(direction: Directions.Direction):
 	call_deferred("_deferred_change_room", direction)
+	#TODO refactor to Callable.call_deferred(args)
 	
 func _deferred_change_room(direction: Directions.Direction):
 	var new_room = current_room.connected_rooms[direction]
@@ -21,7 +30,9 @@ func _deferred_change_room(direction: Directions.Direction):
 	
 	
 	if self.current_room.is_final:
-		self.current_scene.spawn_exit()
+		#self.current_scene.spawn_exit()
+		#self.current_scene.exit.maze_finished.connect(game_over)
+		self.current_scene.game_won.connect(func(): game_won.emit())
 	
 	self.current_scene.initialize(Directions.opposite(direction), self.current_room.connected_rooms)
 	spawn_player(self.current_scene.get_player_spawn())
@@ -35,7 +46,7 @@ func _deferred_change_scene(scene_path: String):
 		self.current_scene.room_change_requested.disconnect(change_room)
 		self.current_scene.scene_change_requested.disconnect(deferred_change_scene)
 		remove_child(current_scene)
-		current_scene.free()
+		current_scene.queue_free()
 	if self.player:
 		remove_child(self.player)
 			
@@ -72,3 +83,8 @@ func _create_player():
 	var p = load("res://player/player.tscn")
 	self.player = p.instantiate()
 	add_child(player)
+	player.health_depleted.connect(func(): player_death.emit())
+
+func reset_player():
+	player.heal(100.0)
+	#TODO PlayerManager

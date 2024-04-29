@@ -191,6 +191,8 @@ vframes = 5
 
 [node name="Hitbox" type="Area2D" parent="weaponPivot/Sprite2D"]
 position = Vector2(-30, -35)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_knd82")
 
 [node name="SwordCollider" type="CollisionShape2D" parent="weaponPivot/Sprite2D/Hitbox"]
