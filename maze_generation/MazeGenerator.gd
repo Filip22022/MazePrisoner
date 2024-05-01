@@ -1,7 +1,7 @@
 class_name MazeGenerator
 extends TileMap
 
-var size: int = 3
+@export var size: int = 3
 var rooms = []
 var ready_path = []
 var rng: RandomNumberGenerator
