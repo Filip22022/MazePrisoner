@@ -18,10 +18,10 @@ func _create_player():
 	var p = load("res://player/player.tscn")
 	self.player = p.instantiate()
 	add_child(player)
-	player.health_depleted.connect(func(): player_death.emit())
+	self.player.health_depleted.connect(func(): player_death.emit())
 
 func reset_player():
-	player.heal(100.0)
+	self.player.heal(100.0)
 	
 func remove_player():
 	if self.player:
