@@ -1,21 +1,21 @@
 class_name SceneManager
 extends Node2D
 
-signal player_death
-signal game_won
+signal game_over
 
 var current_scene: Scene = null
 var rooms = []
 var current_room: MazeRoom
-var player
+@onready var player_manager = $PlayerManager
 
 func _ready():
 	current_scene = $StartMenu
+	player_manager.player_death.connect(func(): game_over.emit())
 	
-func game_over():
+func end_game():
 	_deferred_change_scene("res://scenes/menus/start_menu.tscn")
 	current_scene.start_game.connect(self.get_parent().start_game)
-	reset_player()
+	player_manager.reset_player()
 	
 	
 func change_room(direction: Directions.Direction):
@@ -30,12 +30,10 @@ func _deferred_change_room(direction: Directions.Direction):
 	
 	
 	if self.current_room.is_final:
-		#self.current_scene.spawn_exit()
-		#self.current_scene.exit.maze_finished.connect(game_over)
-		self.current_scene.game_won.connect(func(): game_won.emit())
+		self.current_scene.game_won.connect(func(): game_over.emit())
 	
 	self.current_scene.initialize(Directions.opposite(direction), self.current_room.connected_rooms)
-	spawn_player(self.current_scene.get_player_spawn())
+	player_manager.spawn_player(self.current_scene.get_player_spawn())
 	
 	
 func deferred_change_scene(scene_path: String):
@@ -47,8 +45,7 @@ func _deferred_change_scene(scene_path: String):
 		self.current_scene.scene_change_requested.disconnect(deferred_change_scene)
 		remove_child(current_scene)
 		current_scene.queue_free()
-	if self.player:
-		remove_child(self.player)
+		player_manager.remove_player()
 			
 	current_scene = load(scene_path).instantiate()
 	add_child(current_scene)
@@ -66,25 +63,5 @@ func start_game():
 	call_deferred("_deferred_start_game")
 	
 func _deferred_start_game():
-	spawn_player(self.current_scene.get_player_spawn())
+	player_manager.spawn_player(self.current_scene.get_player_spawn())
 	self.current_scene.initialize(Directions.Direction.Up, self.current_room.connected_rooms)
-	
-func spawn_player(player_position):
-	if not self.has_node("Player"):
-		if not self.player:
-			_create_player()
-		else:
-			add_child(self.player)
-	
-	player.position = player_position
-	
-	
-func _create_player():
-	var p = load("res://player/player.tscn")
-	self.player = p.instantiate()
-	add_child(player)
-	player.health_depleted.connect(func(): player_death.emit())
-
-func reset_player():
-	player.heal(100.0)
-	#TODO PlayerManager
