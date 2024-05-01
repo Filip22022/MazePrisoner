@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node
+extends CharacterBody2D
 
 var health: float
 

@@ -6,6 +6,9 @@ signal health_depleted
 @onready var dash = $dash_timer
 const dash_length = 0.5
 
+func _init():
+	PlayerInfo.player_reference = self
+
 func _physics_process(delta):
 	
 	if ! is_dashing():
@@ -13,9 +16,9 @@ func _physics_process(delta):
 			start_dash()
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction * PlayerInfo.speed
+	self.velocity = direction * PlayerInfo.speed
 	if is_dashing():
-		velocity *= 5 * pow(dash.time_left,1)
+		self.velocity *= 5 * pow(dash.time_left,1)
 	move_and_slide()
 	
 			
