@@ -8,6 +8,7 @@ var _rooms = []
 var _current_room: MazeRoom
 @onready var _player_manager = $PlayerManager
 
+
 func _ready():
 	_current_scene = $StartMenu
 	_player_manager.player_death.connect(func(): game_over.emit())
@@ -27,6 +28,7 @@ func end_game():
 	_current_scene.start_game.connect(self.get_parent().start_game)
 	_player_manager.reset_player()
 	
+	
 func _deferred_change_room(direction: Directions.Direction):
 	call_deferred("_change_room", direction)
 	
@@ -35,7 +37,6 @@ func _change_room(direction: Directions.Direction):
 	_current_room = new_room
 	
 	_change_scene(_current_room.get_scene_path())
-	
 	
 	if _current_room.is_final:
 		_current_scene.game_won.connect(func(): game_over.emit())
