@@ -18,8 +18,9 @@ func start_game():
 	var starting_room: MazeRoom = $MazeGenerator.get_starting_room()
 	starting_room.room_scene_path = "res://scenes/rooms/start_room/start_room.tscn"
 	_current_room = starting_room
-	deferred_change_scene(_current_room.room_scene_path)
-	call_deferred("_deferred_start_game")
+	_deferred_change_scene(_current_room.room_scene_path)
+	_player_manager.spawn_player(_current_scene.get_player_spawn())
+	_current_scene.initialize(Directions.Direction.Up, _current_room.connected_rooms)
 	
 func end_game():
 	_deferred_change_scene("res://scenes/menus/start_menu.tscn")
@@ -29,7 +30,6 @@ func end_game():
 	
 func _change_room(direction: Directions.Direction):
 	call_deferred("_deferred_change_room", direction)
-	#TODO refactor to Callable.call_deferred(args)
 	
 func _deferred_change_room(direction: Directions.Direction):
 	var new_room = _current_room.connected_rooms[direction]
@@ -61,8 +61,3 @@ func _deferred_change_scene(scene_path: String):
 	
 	_current_scene.room_change_requested.connect(_change_room)
 	_current_scene.scene_change_requested.connect(deferred_change_scene)
-	
-	
-func _deferred_start_game():
-	_player_manager.spawn_player(_current_scene.get_player_spawn())
-	_current_scene.initialize(Directions.Direction.Up, _current_room.connected_rooms)
