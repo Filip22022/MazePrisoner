@@ -8,6 +8,7 @@ var _rooms = []
 var _current_room: MazeRoom
 @onready var _player_manager = $PlayerManager
 
+
 func _ready():
 	_current_scene = $StartMenu
 	_player_manager.player_death.connect(func(): game_over.emit())
@@ -18,25 +19,24 @@ func start_game():
 	var starting_room: MazeRoom = $MazeGenerator.get_starting_room()
 	starting_room.room_scene_path = "res://scenes/rooms/start_room/start_room.tscn"
 	_current_room = starting_room
-	deferred_change_scene(_current_room.room_scene_path)
-	call_deferred("_deferred_start_game")
+	_change_scene(_current_room.room_scene_path)
+	_player_manager.spawn_player(_current_scene.get_player_spawn())
+	_current_scene.initialize(Directions.Direction.Up, _current_room.connected_rooms)
 	
 func end_game():
-	_deferred_change_scene("res://scenes/menus/start_menu.tscn")
+	_change_scene("res://scenes/menus/start_menu.tscn")
 	_current_scene.start_game.connect(self.get_parent().start_game)
 	_player_manager.reset_player()
 	
 	
-func _change_room(direction: Directions.Direction):
-	call_deferred("_deferred_change_room", direction)
-	#TODO refactor to Callable.call_deferred(args)
-	
 func _deferred_change_room(direction: Directions.Direction):
+	call_deferred("_change_room", direction)
+	
+func _change_room(direction: Directions.Direction):
 	var new_room = _current_room.connected_rooms[direction]
 	_current_room = new_room
 	
-	_deferred_change_scene(_current_room.get_scene_path())
-	
+	_change_scene(_current_room.get_scene_path())
 	
 	if _current_room.is_final:
 		_current_scene.game_won.connect(func(): game_over.emit())
@@ -45,13 +45,13 @@ func _deferred_change_room(direction: Directions.Direction):
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
 	
 	
-func deferred_change_scene(scene_path: String):
-	call_deferred("_deferred_change_scene", scene_path)
-
 func _deferred_change_scene(scene_path: String):
+	call_deferred("_change_scene", scene_path)
+
+func _change_scene(scene_path: String):
 	if _current_scene:
-		_current_scene.room_change_requested.disconnect(_change_room)
-		_current_scene.scene_change_requested.disconnect(deferred_change_scene)
+		_current_scene.room_change_requested.disconnect(_deferred_change_room)
+		_current_scene.scene_change_requested.disconnect(_deferred_change_scene)
 		remove_child(_current_scene)
 		_current_scene.queue_free()
 		_player_manager.remove_player()
@@ -59,10 +59,5 @@ func _deferred_change_scene(scene_path: String):
 	_current_scene = load(scene_path).instantiate()
 	add_child(_current_scene)
 	
-	_current_scene.room_change_requested.connect(_change_room)
-	_current_scene.scene_change_requested.connect(deferred_change_scene)
-	
-	
-func _deferred_start_game():
-	_player_manager.spawn_player(_current_scene.get_player_spawn())
-	_current_scene.initialize(Directions.Direction.Up, _current_room.connected_rooms)
+	_current_scene.room_change_requested.connect(_deferred_change_room)
+	_current_scene.scene_change_requested.connect(_deferred_change_scene)
