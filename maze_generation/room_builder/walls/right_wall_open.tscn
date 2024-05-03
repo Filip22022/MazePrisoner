@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://rffsa2wb33oi"]
+
+[ext_resource type="TileSet" uid="uid://cfq8ov37aaabu" path="res://assets/walls_tileset.tres" id="1_s0yac"]
+[ext_resource type="TileSet" uid="uid://djvmejlirrxh7" path="res://assets/floor_tileset.tres" id="2_sid35"]
+
+[node name="LeftWallOpen" type="Node2D"]
+
+[node name="WallTiles" type="TileMap" parent="."]
+z_index = 1
+tile_set = ExtResource("1_s0yac")
+format = 2
+layer_0/tile_data = PackedInt32Array(-327680, 131072, 6, -262144, 131072, 7, -196608, 131072, 8, -131072, 131072, 9, -524288, 131072, 4, -458752, 131072, 4, -393216, 131072, 5, 65536, 131072, 2, 131072, 131072, 3, 196608, 131072, 4, 262144, 131072, 4, 327680, 1048576, 8, -589824, 1048576, 2)
+
+[node name="FloorTiles" type="TileMap" parent="."]
+z_index = -10
+tile_set = ExtResource("2_sid35")
+format = 2
+layer_0/tile_data = PackedInt32Array(327680, 196609, 1, 262144, 196609, 1, 196608, 196609, 1, 131072, 196609, 1, 65536, 196609, 1, 0, 196609, 1, -65536, 196609, 1, -131072, 196609, 1, -524288, 196609, 1, -458752, 196609, 1, -393216, 196609, 1, -327680, 196609, 1, -262144, 196609, 1, -196608, 196609, 1, -589824, 196609, 1)

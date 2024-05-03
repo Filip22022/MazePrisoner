@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://baqx1o2jdvg6a"]
+
+[ext_resource type="TileSet" uid="uid://cfq8ov37aaabu" path="res://assets/walls_tileset.tres" id="1_nsm2p"]
+[ext_resource type="TileSet" uid="uid://djvmejlirrxh7" path="res://assets/floor_tileset.tres" id="2_epvpt"]
+
+[node name="LeftWallOpen" type="Node2D"]
+
+[node name="WallTiles" type="TileMap" parent="."]
+z_index = 1
+tile_set = ExtResource("1_nsm2p")
+format = 2
+layer_0/tile_data = PackedInt32Array(65526, 655360, 8, 65527, 720896, 8, 65528, 786432, 8, 65529, 851968, 8, 65530, 917504, 8, 65531, 983040, 8, 65532, 655360, 8, 65533, 1703936, 4, 65534, 1769472, 4, 1, 1572864, 4, 4, 917504, 8, 5, 983040, 8, 6, 786432, 8, 7, 851968, 8, 8, 917504, 8, 9, 983040, 8, 2, 1638400, 4, 3, 851968, 8)
+
+[node name="FloorTiles" type="TileMap" parent="."]
+z_index = -10
+tile_set = ExtResource("2_epvpt")
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 131073, 4, 0, 131073, 4, 65534, 131073, 4, 1, 131073, 4)
