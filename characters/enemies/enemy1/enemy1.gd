@@ -3,7 +3,7 @@ extends Enemy
 var speed = 100
 
 func _init():
-	self.health = 100.0
+	self.health = 10.0
 
 func _process(delta):
 	var player = PlayerInfo.get_player()

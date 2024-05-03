@@ -59,6 +59,20 @@ direction = 2
 position = Vector2(68, 240)
 shape = SubResource("RectangleShape2D_anhal")
 
+[node name="EnemySpawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawns" groups=["enemy_spawns"]]
+position = Vector2(80, 56)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawns" groups=["enemy_spawns"]]
+position = Vector2(-128, 72)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawns" groups=["enemy_spawns"]]
+position = Vector2(-16, -96)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawns" groups=["enemy_spawns"]]
+position = Vector2(64, -48)
+
 [connection signal="transition_entered" from="TransitionAreaLeft" to="." method="_on_transition_area_transition_entered"]
 [connection signal="transition_entered" from="TransitionAreaRight" to="." method="_on_transition_area_transition_entered"]
 [connection signal="transition_entered" from="TransitionAreaDown" to="." method="_on_transition_area_transition_entered"]
