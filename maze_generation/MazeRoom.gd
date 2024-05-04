@@ -6,6 +6,7 @@ var y: int
 var room_scene_path: String
 var connected_rooms = {}
 var walls_id = 15
+#TODO remove walls_id when obsolete
 var color = 0
 var is_final = false
 
