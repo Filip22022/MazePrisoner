@@ -6,7 +6,7 @@ signal scene_change_requested(scene_path: String)
 
 var entered_from: Directions.Direction
 
-func initialize(entered_from: Directions.Direction, connections: Dictionary):
+func initialize(entered_from: Directions.Direction):
 	self.entered_from = entered_from
 
 func _on_transition_area_transition_entered(direction: Directions.Direction):
