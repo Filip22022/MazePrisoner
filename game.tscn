@@ -25,7 +25,6 @@ position = Vector2(2, 2)
 [node name="MazeGenerator" type="TileMap" parent="SceneManager"]
 format = 2
 script = ExtResource("4_kpke4")
-size = 7
 
 [node name="UIManager" type="CanvasLayer" parent="."]
 script = ExtResource("5_p0hqd")
