@@ -8,6 +8,7 @@ func build(directions):
 	room = load("res://maze_generation/room_builder/empty_room.tscn").instantiate()
 	
 	_build_walls(directions)
+	_build_floor()
 	_add_player_spawns(directions)
 	
 	return room
@@ -61,6 +62,10 @@ func _add_player_spawns(open_directions):
 				spawn.set_name("PlayerSpawnLeft")
 		self.room.add_child(spawn)
 		self.room.default_spawn = spawn
+		
+func _build_floor():
+	var floor_scene = load("res://maze_generation/room_builder/floors/floor1.tscn").instantiate()
+	self.room.add_child(floor_scene)
 		
 func build_final_room(directions):
 	room = build(directions)
