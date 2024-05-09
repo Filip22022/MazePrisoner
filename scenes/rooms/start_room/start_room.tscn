@@ -1,10 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://djgb0bj5l1fua"]
 
 [ext_resource type="Script" path="res://scenes/rooms/start_room/start_room.gd" id="1_l5iam"]
-[ext_resource type="TileSet" uid="uid://moxefdee3n06" path="res://assets/tileset.tres" id="2_lj034"]
+[ext_resource type="TileSet" path="res://assets/tileset.tres" id="2_lj034"]
 [ext_resource type="Script" path="res://scenes/objects/room_transition_area.gd" id="3_n6ho0"]
-[ext_resource type="PackedScene" uid="uid://b45la76gpqvta" path="res://scenes/objects/door/door.tscn" id="4_yf4uc"]
+[ext_resource type="PackedScene" uid="uid://b45la76gpqvta" path="res://maze_generation/room_builder/door/door.tscn" id="4_yf4uc"]
 [ext_resource type="PackedScene" uid="uid://c71rjr71opqes" path="res://characters/enemies/enemy1/enemy1.tscn" id="5_6atdb"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anhal"]
 size = Vector2(86.5, 68)

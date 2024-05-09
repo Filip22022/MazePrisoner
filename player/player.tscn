@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword.tscn" id="3_brsre"]
 [ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_y2d3n"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfuw2"]
-size = Vector2(108.333, 44.3334)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8el24"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uyu8n"]
 radius = 87.963
@@ -30,8 +29,8 @@ radius = 31.6667
 height = 66.6667
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(57, 71)
-scale = Vector2(0.6, 0.6)
+z_index = 5
+scale = Vector2(0.273895, 0.329491)
 platform_floor_layers = 4294901760
 script = ExtResource("1_g7hg3")
 
@@ -39,9 +38,9 @@ script = ExtResource("1_g7hg3")
 texture = ExtResource("2_3hb6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.44379e-06, 20)
-scale = Vector2(0.6, 0.6)
-shape = SubResource("RectangleShape2D_mfuw2")
+position = Vector2(-2.44379e-06, 15.1749)
+scale = Vector2(2.20646, 1.69259)
+shape = SubResource("CircleShape2D_8el24")
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -58,10 +57,10 @@ debug_color = Color(0.862745, 0.352941, 0.121569, 0.419608)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -41.6667
-offset_top = -45.0
-offset_right = 99.3336
-offset_bottom = -18.0
+offset_left = -43.1586
+offset_top = -57.6647
+offset_right = 97.8417
+offset_bottom = -30.6647
 scale = Vector2(0.6, 0.6)
 theme_override_styles/background = SubResource("StyleBoxFlat_67oi0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5mnl8")
@@ -71,14 +70,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sword" parent="." instance=ExtResource("3_brsre")]
 position = Vector2(-3.33333, -1.66667)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.904645, 0.842799)
 
 [node name="TransitionTriggerArea" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionTriggerArea"]
-position = Vector2(-1.66666, 0)
+position = Vector2(-7.15256e-07, 0)
 shape = SubResource("CapsuleShape2D_5xh3s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
