@@ -83,6 +83,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 Directions="*res://autoloads/directions.gd"
 Rooms="*res://autoloads/rooms.gd"
 PlayerInfo="*res://autoloads/player_info.gd"
+RoomBuilder="*res://autoloads/room_builder.gd"
 
 [display]
 
@@ -139,4 +140,5 @@ Dash={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"

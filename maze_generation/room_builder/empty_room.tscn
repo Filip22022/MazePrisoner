@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://53q5dvbvmhry"]
+[gd_scene load_steps=2 format=3 uid="uid://53q5dvbvmhry"]
+
+[ext_resource type="Script" path="res://maze_generation/room_builder/room_scene.gd" id="1_2pe8v"]
 
 [node name="EmptyRoom" type="Node2D"]
+script = ExtResource("1_2pe8v")

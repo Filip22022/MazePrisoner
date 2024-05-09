@@ -1,25 +1,19 @@
-class_name RoomBuilder
 extends Node2D
 
-var room_height = 320
-var room_width = 480
+var room_height = 256
+var room_width = 416
 var room
 
-func _init():
-	build([1,2])
-	var player = load("res://player/player.tscn").instantiate()
-	add_child(player)
-	add_child(room)
-
-func build(directions: Array[Directions.Direction]):
+func build(directions):
 	room = load("res://maze_generation/room_builder/empty_room.tscn").instantiate()
 	
 	build_walls(directions)
 	add_player_spawns(directions)
+	
 	return room
 	
 	
-func build_walls(open_directions: Array[Directions.Direction]):
+func build_walls(open_directions):
 	var walls = {}
 	walls[Directions.Direction.Up] = {
 			"path": "res://maze_generation/room_builder/walls/top_wall_", 
@@ -40,7 +34,7 @@ func build_walls(open_directions: Array[Directions.Direction]):
 	
 	for dir in Directions.Direction.values():
 		if dir in open_directions:
-			walls[dir]["path"] += "open.tscn"
+			walls[dir]["path"] += "open.tscn"			
 		else:
 			walls[dir]["path"] += "closed.tscn"
 			
@@ -49,9 +43,7 @@ func build_walls(open_directions: Array[Directions.Direction]):
 		current_wall.global_position = wall["position"]
 		self.room.add_child(current_wall)
 	
-func add_player_spawns(open_directions: Array[Directions.Direction]):
-	var spawns = {}
-	
+func add_player_spawns(open_directions):
 	for dir in open_directions:
 		var spawn = Marker2D.new()
 		match dir:
@@ -61,11 +53,11 @@ func add_player_spawns(open_directions: Array[Directions.Direction]):
 			Directions.Direction.Right:
 				spawn.global_position = Vector2i((room_width/2-32),0)
 				spawn.set_name("PlayerSpawnRight")
-			Directions.Direction.Right:
+			Directions.Direction.Down:
 				spawn.global_position = Vector2i(0, room_height/2-32)
 				spawn.set_name("PlayerSpawnDown")
-			Directions.Direction.Right:
+			Directions.Direction.Left:
 				spawn.global_position = Vector2i(-(room_width/2-32),0)
 				spawn.set_name("PlayerSpawnLeft")
 		self.room.add_child(spawn)
-		
+		self.room.default_spawn = spawn

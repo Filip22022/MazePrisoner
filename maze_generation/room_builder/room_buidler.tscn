@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4mxpqib6mexy"]
+[gd_scene load_steps=2 format=3 uid="uid://0n1riy0hm7m0"]
 
-[ext_resource type="Script" path="res://maze_generation/room_builder/room_builder.gd" id="1_tg23c"]
+[ext_resource type="Script" path="res://autoloads/room_builder.gd" id="1_tg23c"]
 
 [node name="RoomBuidler" type="Node2D"]
 script = ExtResource("1_tg23c")
