@@ -7,13 +7,13 @@ var room
 func build(directions):
 	room = load("res://maze_generation/room_builder/empty_room.tscn").instantiate()
 	
-	build_walls(directions)
-	add_player_spawns(directions)
+	_build_walls(directions)
+	_add_player_spawns(directions)
 	
 	return room
 	
 	
-func build_walls(open_directions):
+func _build_walls(open_directions):
 	var walls = {}
 	walls[Directions.Direction.Up] = {
 			"path": "res://maze_generation/room_builder/walls/top_wall_", 
@@ -43,7 +43,7 @@ func build_walls(open_directions):
 		current_wall.global_position = wall["position"]
 		self.room.add_child(current_wall)
 	
-func add_player_spawns(open_directions):
+func _add_player_spawns(open_directions):
 	for dir in open_directions:
 		var spawn = Marker2D.new()
 		match dir:
@@ -61,3 +61,18 @@ func add_player_spawns(open_directions):
 				spawn.set_name("PlayerSpawnLeft")
 		self.room.add_child(spawn)
 		self.room.default_spawn = spawn
+		
+func build_final_room(directions):
+	room = build(directions)
+	
+	
+	var script = load("res://maze_generation/room_builder/final_room_scene.gd")
+	room.set_script(script)
+	
+	
+	var exit = load("res://scenes/objects/exit/maze_exit.tscn").instantiate()
+	exit.global_position = Vector2i(0,0)
+	exit.maze_finished.connect(room.maze_finished)
+	room.add_child(exit)
+	 
+	return room

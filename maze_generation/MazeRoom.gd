@@ -26,7 +26,6 @@ func set_color(color):
 	
 func set_as_final():
 	self.is_final = true
-	self.room_scene_path = Rooms.get_final_room_path()
 	
 func check_neighbor_side(r2):
 	if (self.x - r2.x == -1 && self.y == r2.y):
@@ -40,5 +39,8 @@ func check_neighbor_side(r2):
 	
 func get_room_scene():
 	if not self.room_scene:
-		self.room_scene = RoomBuilder.build(connected_rooms.keys())
+		if self.is_final:
+			self.room_scene = RoomBuilder.build_final_room(connected_rooms.keys())
+		else:
+			self.room_scene = RoomBuilder.build(connected_rooms.keys())
 	return self.room_scene

@@ -7,6 +7,8 @@ func _ready():
 	var doors = get_tree().get_nodes_in_group("doors")
 	for door in doors:
 		door.entered.connect(_on_transition_area_transition_entered)
+		
+		
 
 func room_cleared():
 	open_doors()
