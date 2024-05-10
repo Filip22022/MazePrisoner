@@ -1,6 +1,6 @@
 extends Node2D
 
-var Enemy = preload("res://characters/enemies/enemy1/enemy1.tscn")
+var Enemy = [preload("res://characters/enemies/enemy1/enemy1.tscn"), preload("res://characters/enemies/enemy2/enemy2.tscn"), preload("res://characters/enemies/enemy3/enemy3.tscn")]
 
 func spawn_enemies(number: int):
 	
@@ -9,9 +9,10 @@ func spawn_enemies(number: int):
 		return
 	
 	for n in range(number):
+		var id_enemy = randi_range(0,2)
 		var spawn = spawns[randi()%spawns.size()]
 		spawns.erase(spawn)
-		var enemy = Enemy.instantiate()
+		var enemy = Enemy[id_enemy].instantiate()
 		enemy.position = spawn.position
 		enemy.add_to_group("enemies")
 		add_child(enemy)
