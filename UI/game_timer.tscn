@@ -11,6 +11,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3xqc7")
 
+[node name="ColorRect" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.670588)
+layout_mode = 0
+offset_left = 528.0
+offset_top = 16.0
+offset_right = 592.0
+offset_bottom = 48.0
+
 [node name="TimerLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 536.0
