@@ -12,7 +12,7 @@ func spawn_enemies(number: int):
 		var id_enemy = randi_range(0,2)
 		var spawn = spawns[randi()%spawns.size()]
 		spawns.erase(spawn)
-		var enemy = Enemy[2].instantiate()
+		var enemy = Enemy[id_enemy].instantiate()
 		enemy.position = spawn.position
 		enemy.add_to_group("enemies")
 		add_child(enemy)
