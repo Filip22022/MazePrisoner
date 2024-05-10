@@ -34,13 +34,13 @@ scale = Vector2(0.273895, 0.329491)
 platform_floor_layers = 4294901760
 script = ExtResource("1_g7hg3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3hb6n")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.44379e-06, 15.1749)
 scale = Vector2(2.20646, 1.69259)
 shape = SubResource("CircleShape2D_8el24")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3hb6n")
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
