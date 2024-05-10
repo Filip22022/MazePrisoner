@@ -18,7 +18,6 @@ func _ready():
 func start_game():
 	_rooms = $MazeGenerator.generate_maze()
 	var starting_room: MazeRoom = $MazeGenerator.get_starting_room()
-	#starting_room.room_scene_path = "res://scenes/rooms/start_room/start_room.tscn"
 	_current_room = starting_room
 	_change_scene(_current_room.get_room_scene())
 	_player_manager.spawn_player(_current_scene.get_player_spawn())

@@ -15,8 +15,6 @@ func spawn_enemies(number: int):
 		enemy.position = spawn.position
 		enemy.add_to_group("enemies")
 		add_child(enemy)
-		print(spawn)
-		print(spawns.size())
 
 func clear_enemies():
 	var enemies = get_tree().get_nodes_in_group("enemies")

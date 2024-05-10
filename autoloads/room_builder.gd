@@ -10,6 +10,7 @@ func build(directions):
 	_build_walls(directions)
 	_build_floor()
 	_add_player_spawns(directions)
+	_build_enemy_spawns()
 	
 	return room
 	
@@ -66,6 +67,18 @@ func _add_player_spawns(open_directions):
 func _build_floor():
 	var floor_scene = load("res://maze_generation/room_builder/floors/floor1.tscn").instantiate()
 	self.room.add_child(floor_scene)
+	
+func _build_enemy_spawns():
+	for i in range(7):
+		var marker_scene = Marker2D.new()
+		
+		var random_x = randi_range(-200, 200)
+		var random_y = randi_range(-100, 100)
+		var random_position = Vector2(random_x, random_y)
+		marker_scene.position = random_position
+		
+		marker_scene.add_to_group("enemy_spawns")
+		room.add_child(marker_scene)
 		
 func build_final_room(directions):
 	room = build(directions)
