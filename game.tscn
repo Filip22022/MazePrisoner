@@ -6,8 +6,33 @@
 [ext_resource type="Script" path="res://maze_generation/MazeGenerator.gd" id="4_kpke4"]
 [ext_resource type="Script" path="res://UI/UIManager.gd" id="5_p0hqd"]
 [ext_resource type="PackedScene" uid="uid://b8xthppp1k7fo" path="res://UI/game_timer.tscn" id="6_tuvjb"]
-[ext_resource type="Script" path="res://characters/enemies/enemy_manager.gd" id="6_vn0nn"]
 [ext_resource type="Script" path="res://player/PlayerManager.gd" id="7_xvrln"]
+
+[sub_resource type="GDScript" id="GDScript_i7peb"]
+script/source = "extends Node2D
+
+var Enemy = [preload(\"res://characters/enemies/enemy1/enemy1.tscn\"), preload(\"res://characters/enemies/enemy2/enemy2.tscn\"), preload(\"res://characters/enemies/enemy3/enemy3.tscn\")]
+
+func spawn_enemies(number: int):
+	
+	var spawns = get_tree().get_nodes_in_group(\"enemy_spawns\")
+	if spawns.size() == 0:
+		return
+	
+	for n in range(number):
+		var id_enemy = randi_range(0,2)
+		var spawn = spawns[randi()%spawns.size()]
+		spawns.erase(spawn)
+		var enemy = Enemy[id_enemy].instantiate()
+		enemy.position = spawn.position
+		enemy.add_to_group(\"enemies\")
+		add_child(enemy)
+
+func clear_enemies():
+	var enemies = get_tree().get_nodes_in_group(\"enemies\")
+	for enemy in enemies:
+		enemy.queue_free()
+"
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -28,7 +53,7 @@ format = 2
 script = ExtResource("4_kpke4")
 
 [node name="EnemyManager" type="Node2D" parent="SceneManager"]
-script = ExtResource("6_vn0nn")
+script = SubResource("GDScript_i7peb")
 
 [node name="UIManager" type="CanvasLayer" parent="."]
 script = ExtResource("5_p0hqd")
