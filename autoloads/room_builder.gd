@@ -4,6 +4,8 @@ var room_height = 256
 var room_width = 416
 var room
 
+var floors = [preload("res://maze_generation/room_builder/floors/floor1.tscn"), preload("res://maze_generation/room_builder/floors/floor2.tscn"),preload("res://maze_generation/room_builder/floors/floor3.tscn"),preload("res://maze_generation/room_builder/floors/floor4.tscn")]
+
 func build(directions):
 	room = load("res://maze_generation/room_builder/empty_room.tscn").instantiate()
 	
@@ -64,7 +66,8 @@ func _add_player_spawns(open_directions):
 		self.room.default_spawn = spawn
 		
 func _build_floor():
-	var floor_scene = load("res://maze_generation/room_builder/floors/floor1.tscn").instantiate()
+	var random = randi_range(0, len(self.floors)-1)
+	var floor_scene = self.floors[random].instantiate()
 	self.room.add_child(floor_scene)
 		
 func build_final_room(directions):

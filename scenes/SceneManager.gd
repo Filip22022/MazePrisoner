@@ -54,7 +54,6 @@ func _change_scene(scene: Scene):
 		_current_scene.room_change_requested.disconnect(_deferred_change_room)
 		_current_scene.scene_change_requested.disconnect(_deferred_change_scene)
 		remove_child(_current_scene)
-		_current_scene.queue_free()
 		_player_manager.remove_player()
 			
 	_current_scene = scene
