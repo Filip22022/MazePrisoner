@@ -135,8 +135,8 @@ func _random_new_cell():
 	return new_cell
 	
 #func _color_path(path): 
-	##for cell in path:
-		##cell.set_color(color_counter)
+	#for cell in path:
+		#cell.set_color(color_counter)
 		#
 	#color_counter += 1
 	#if color_counter > 11:
