@@ -5,9 +5,12 @@ signal health_depleted
 
 @onready var dash = $dash_timer
 const dash_length = 0.5
+@onready var max_health: float = PlayerInfo.get_stat(PlayerInfo.StatNames.health)
+@onready var current_health = max_health
 
 func _init():
 	PlayerInfo.player_reference = self
+	PlayerInfo.stats_changed.connect(update_stats)
 
 func _physics_process(delta):
 	
@@ -16,11 +19,13 @@ func _physics_process(delta):
 			start_dash()
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	self.velocity = direction * PlayerInfo.speed
+	self.velocity = direction * PlayerInfo.get_stat(PlayerInfo.StatNames.speed)
 	if is_dashing():
 		self.velocity *= 5 * pow(dash.time_left,1)
 	move_and_slide()
 	
+func update_stats():
+	self.max_health = PlayerInfo.get_stat(PlayerInfo.StatNames.health)
 			
 func take_damage(amount: float):
 	_change_health(-amount)
@@ -29,20 +34,13 @@ func heal(amount: float):
 	_change_health(amount)
 	
 func _change_health(amount: float):
-	PlayerInfo.health += amount
-	%HealthBar.value = PlayerInfo.health
-	if PlayerInfo.health <= 0.0:
-		health_depleted.emit()
+	current_health += amount
+	if current_health > max_health:
+		current_health = max_health
+	%HealthBar.value = current_health
 	
-func change_speed(amount: float):
-	PlayerInfo.speed += amount
-	if PlayerInfo.speed < 50.0:
-		PlayerInfo.speed = 50.0
-		
-func change_player_damage(amount: float):
-	PlayerInfo.damage += amount
-	if PlayerInfo.damage < 0.1:
-		PlayerInfo.damage = 0.1
+	if current_health <= 0.0:
+		health_depleted.emit()
 
 func start_dash():
 	dash.wait_time = dash_length
