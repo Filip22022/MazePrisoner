@@ -9,19 +9,16 @@ var interact: Callable = func():
 
 
 func _ready():
-	label.global_position = self.global_position
-	label.global_position.y -= 36
-	label.global_position.x -= label.size.x / 2
 	label.text = "[E] to " + action_name
-	label.set("theme_override_font_sizes/font_size", 10)
 	add_child(label)
+	label.hide()
 	
 	self.add_to_group("InteractionAreas")
 	
-func _on_body_entered(body):
+func _on_area_entered(body):
 	InteractionManager.register_area(self)
 
-func _on_body_exited(body):
+func _on_area_exited(body):
 	InteractionManager.unregister_area(self)
 	
 func show_label():

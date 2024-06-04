@@ -31,11 +31,11 @@ func get_stat(stat_name: StatNames):
 
 func upgrade(stat_name: StatNames):
 	if Stats.has(stat_name):
-		Stats[stat_name]["current_value"] += Stats[stat_name]["multiplier"]
+		Stats[stat_name]["current_value"] += 1
 	stats_changed.emit()
 		
 func downgrade(stat_name: StatNames):
 	if Stats.has(stat_name):
-		Stats[stat_name]["current_value"] -= Stats[stat_name]["multiplier"]
+		Stats[stat_name]["current_value"] -= 1
 	stats_changed.emit()
 		

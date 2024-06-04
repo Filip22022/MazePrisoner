@@ -10,6 +10,7 @@ radius = 24.0
 script = ExtResource("1_fdvo3")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_vp1ag")]
+collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_kwrud")

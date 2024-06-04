@@ -33,12 +33,14 @@ texture = ExtResource("5_ari48")
 
 [node name="UpgradeShopSpeed" parent="." instance=ExtResource("4_55tuo")]
 position = Vector2(0, -64)
+upgraded_stat = 1
 
 [node name="SpriteSpeed" type="Sprite2D" parent="UpgradeShopSpeed"]
 texture = ExtResource("6_c8d1m")
 
 [node name="UpgradeShopDamage" parent="." instance=ExtResource("4_55tuo")]
 position = Vector2(104, -64)
+upgraded_stat = 2
 
 [node name="SpriteDamage" type="Sprite2D" parent="UpgradeShopDamage"]
 texture = ExtResource("7_my56i")

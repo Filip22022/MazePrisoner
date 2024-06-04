@@ -11,6 +11,7 @@ func register_area(area: InteractionArea):
 func unregister_area(area: InteractionArea):
 	var index = active_areas.find(area)
 	if index != -1:
+		active_areas[index].hide_label()
 		active_areas.remove_at(index)
 
 func _process(delta):
