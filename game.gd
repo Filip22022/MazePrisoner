@@ -10,6 +10,7 @@ func start_game():
 	scene_manager.start_game()
 	ui_manager.start_game()
 
+
 func end_game():
 	scene_manager.end_game.call_deferred()
 	ui_manager.end_game.call_deferred()

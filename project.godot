@@ -143,6 +143,10 @@ interact={
 2d_physics/layer_3="Enemy Hitboxes"
 2d_physics/layer_4="Scene Transitions"
 
+[physics]
+
+3d/size/initial_position=Vector2i(-1000, -100)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

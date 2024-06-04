@@ -24,6 +24,7 @@ func get_player():
 		return player_reference
 	else:
 		push_error("The player is missing...")
+		return null
 		
 func get_stat(stat_name: StatNames):
 	return Stats[stat_name]["current_value"] * Stats[stat_name]["multiplier"]
