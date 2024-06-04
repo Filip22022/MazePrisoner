@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c25rgsyshhvl"]
+[gd_scene load_steps=10 format=3 uid="uid://c25rgsyshhvl"]
 
-[ext_resource type="Script" path="res://maze_generation/room_builder/room_scene.gd" id="1_fq1is"]
+[ext_resource type="Script" path="res://maze_generation/room_builder/hub_room.gd" id="1_dp7q8"]
 [ext_resource type="TileSet" uid="uid://djvmejlirrxh7" path="res://assets/floor_tileset.tres" id="2_3so5b"]
 [ext_resource type="TileSet" uid="uid://cfq8ov37aaabu" path="res://assets/walls_tileset.tres" id="3_nxmkq"]
 [ext_resource type="PackedScene" uid="uid://cw6adjsonjx0n" path="res://scenes/objects/upgrade_shop/upgrade_shop.tscn" id="4_55tuo"]
 [ext_resource type="Texture2D" uid="uid://86w73uqj3hw5" path="res://assets/health.png" id="5_ari48"]
 [ext_resource type="Texture2D" uid="uid://dxxy4rbhppw0x" path="res://assets/speed.png" id="6_c8d1m"]
 [ext_resource type="Texture2D" uid="uid://cbireu6rq12pr" path="res://assets/damage.png" id="7_my56i"]
+[ext_resource type="Texture2D" uid="uid://djf0fwsvotr7y" path="res://scenes/objects/exit/maze_exit.png" id="9_d7nna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tek16"]
+radius = 31.1482
 
 [node name="HubRoom" type="Node2D"]
-script = ExtResource("1_fq1is")
+script = ExtResource("1_dp7q8")
 
 [node name="FloorTilemap" type="TileMap" parent="."]
 tile_set = ExtResource("2_3so5b")
@@ -38,3 +42,17 @@ position = Vector2(104, -64)
 
 [node name="SpriteDamage" type="Sprite2D" parent="UpgradeShopDamage"]
 texture = ExtResource("7_my56i")
+
+[node name="EntranceArea" type="Area2D" parent="."]
+position = Vector2(0, 48)
+scale = Vector2(-0.513673, -0.513673)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceArea"]
+shape = SubResource("CircleShape2D_tek16")
+
+[node name="Sprite2D" type="Sprite2D" parent="EntranceArea"]
+texture = ExtResource("9_d7nna")
+
+[connection signal="area_entered" from="EntranceArea" to="." method="_on_area_entered"]

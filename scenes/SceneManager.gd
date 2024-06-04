@@ -2,6 +2,7 @@ class_name SceneManager
 extends Node2D
 
 signal game_over
+signal scene_change_finished
 
 var _current_scene: Scene = null
 var _rooms = []
@@ -13,8 +14,10 @@ func _ready():
 	_current_scene = $StartMenu
 	_player_manager.player_death.connect(func(): game_over.emit())
 	
-	
 func start_game():
+	_enter_hub()
+	
+func start_run():
 	_rooms = $MazeGenerator.generate_maze()
 	var starting_room: MazeRoom = $MazeGenerator.get_starting_room()
 	#starting_room.room_scene_path = "res://scenes/rooms/start_room/start_room.tscn"
@@ -29,6 +32,8 @@ func end_game():
 	_current_scene.start_game.connect(self.get_parent().start_game)
 	_player_manager.reset_player()
 	
+func end_run():
+	_enter_hub()
 	
 func _deferred_change_room(direction: Directions.Direction):
 	call_deferred("_change_room", direction)
@@ -46,8 +51,8 @@ func _change_room(direction: Directions.Direction):
 	_current_scene.open_doors()
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
 	
-func _deferred_change_scene(scene_path: String):
-	call_deferred("_change_scene", scene_path)
+func _deferred_change_scene(scene: Scene):
+	call_deferred("_change_scene", scene)
 
 func _change_scene(scene: Scene):
 	if _current_scene:
@@ -61,4 +66,10 @@ func _change_scene(scene: Scene):
 	
 	_current_scene.room_change_requested.connect(_deferred_change_room)
 	_current_scene.scene_change_requested.connect(_deferred_change_scene)
+	scene_change_finished.emit()
 	
+func _enter_hub():
+	var hub_room_scene = load("res://scenes/hub_room/hub_room.tscn").instantiate()
+	hub_room_scene.run_started.connect(start_run)
+	_change_scene(hub_room_scene)
+	_player_manager.spawn_player(_current_scene.get_player_spawn())

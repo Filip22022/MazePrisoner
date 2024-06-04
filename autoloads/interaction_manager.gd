@@ -1,8 +1,6 @@
 extends Node
 
 @onready var player = PlayerInfo.get_player()
-@onready var label = $Label
-
 
 var active_areas = []
 var can_interact = true
@@ -30,7 +28,6 @@ func _input(event):
 	if event.is_action_pressed("interact") && can_interact:
 		if active_areas.size() > 0:
 			can_interact = false
-			label.hide()
 			
 			await active_areas[0].interact.call()
 			
