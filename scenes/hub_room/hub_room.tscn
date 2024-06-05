@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c25rgsyshhvl"]
 
-[ext_resource type="Script" path="res://maze_generation/room_builder/hub_room.gd" id="1_dp7q8"]
+[ext_resource type="Script" path="res://scenes/hub_room/hub_room.gd" id="1_dp7q8"]
 [ext_resource type="TileSet" uid="uid://djvmejlirrxh7" path="res://assets/floor_tileset.tres" id="2_3so5b"]
 [ext_resource type="TileSet" uid="uid://cfq8ov37aaabu" path="res://assets/walls_tileset.tres" id="3_nxmkq"]
 [ext_resource type="PackedScene" uid="uid://cw6adjsonjx0n" path="res://scenes/objects/upgrade_shop/upgrade_shop.tscn" id="4_55tuo"]
