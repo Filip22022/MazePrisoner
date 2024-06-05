@@ -2,9 +2,7 @@ class_name HubRoom
 extends RoomScene
 
 signal run_started
-var started: bool = false
 
 func _on_area_entered(_area):
-	if not started:
-		started = true
+	if not GameState.run_in_progress:
 		run_started.emit()
