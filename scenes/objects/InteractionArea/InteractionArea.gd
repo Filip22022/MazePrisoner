@@ -10,7 +10,6 @@ var interact: Callable = func():
 
 func _ready():
 	label.text = "[E] to " + action_name
-	add_child(label)
 	label.hide()
 	
 	self.add_to_group("InteractionAreas")

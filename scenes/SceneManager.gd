@@ -2,7 +2,6 @@ class_name SceneManager
 extends Node2D
 
 signal game_over
-signal scene_change_finished
 
 var _current_scene: Scene = null
 var _rooms = []
@@ -66,10 +65,12 @@ func _change_scene(scene: Scene):
 	
 	_current_scene.room_change_requested.connect(_deferred_change_room)
 	_current_scene.scene_change_requested.connect(_deferred_change_scene)
-	scene_change_finished.emit()
 	
 func _enter_hub():
 	var hub_room_scene = load("res://scenes/hub_room/hub_room.tscn").instantiate()
-	hub_room_scene.run_started.connect(start_run)
+	hub_room_scene.run_started.connect(_deferred_start_run)
 	_change_scene(hub_room_scene)
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
+	
+func _deferred_start_run():
+	call_deferred("start_run")
