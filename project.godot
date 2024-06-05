@@ -84,6 +84,7 @@ Directions="*res://autoloads/directions.gd"
 PlayerInfo="*res://autoloads/player_info.gd"
 RoomBuilder="*res://autoloads/room_builder.gd"
 InteractionManager="*res://autoloads/interaction_manager.gd"
+GameState="*res://autoloads/game_state.gd"
 
 [display]
 
