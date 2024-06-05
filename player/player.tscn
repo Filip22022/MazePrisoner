@@ -7,8 +7,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8el24"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uyu8n"]
-radius = 87.963
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt510"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67oi0"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -50,9 +49,9 @@ collision_mask = 4
 script = ExtResource("3_y2d3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-2.77778, -2.38419e-06)
-scale = Vector2(0.6, 0.6)
-shape = SubResource("CircleShape2D_uyu8n")
+position = Vector2(0, 2.27374e-13)
+scale = Vector2(5.22465, 5.05132)
+shape = SubResource("RectangleShape2D_dt510")
 debug_color = Color(0.862745, 0.352941, 0.121569, 0.419608)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -73,6 +72,8 @@ position = Vector2(-3.33333, -1.66667)
 scale = Vector2(0.904645, 0.842799)
 
 [node name="TransitionTriggerArea" type="Area2D" parent="."]
+position = Vector2(0, 15.1749)
+scale = Vector2(1, 0.514403)
 collision_layer = 8
 collision_mask = 8
 
