@@ -9,11 +9,13 @@
 [ext_resource type="Script" path="res://player/PlayerManager.gd" id="7_xvrln"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 y_sort_enabled = true
 position = Vector2(1, 0)
 script = ExtResource("1_hxirs")
 
 [node name="SceneManager" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("3_jjlmg")
 
 [node name="PlayerManager" type="Node2D" parent="SceneManager"]
@@ -31,6 +33,7 @@ size = 9
 script = ExtResource("5_p0hqd")
 
 [node name="GameTimer" parent="UIManager" instance=ExtResource("6_tuvjb")]
+process_mode = 1
 texture_filter = 2
 offset_left = 1.0
 offset_right = 1.0
