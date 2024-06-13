@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_g7hg3"]
 [ext_resource type="Texture2D" uid="uid://bl0syrxdooqvf" path="res://player/player_sprite.png" id="2_3hb6n"]
-[ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword.tscn" id="3_brsre"]
+[ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword/sword.tscn" id="3_brsre"]
 [ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_y2d3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8el24"]
@@ -81,7 +81,8 @@ position = Vector2(-7.15256e-07, 0)
 shape = SubResource("CapsuleShape2D_5xh3s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+scale = Vector2(0.707917, 0.707917)
+zoom = Vector2(2.5, 2.5)
 position_smoothing_speed = 30.0
 
 [node name="dash_timer" type="Timer" parent="."]
