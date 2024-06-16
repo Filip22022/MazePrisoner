@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bavgw8hew7hmh"]
 
-[ext_resource type="Script" path="res://sword.gd" id="1_a1xff"]
-[ext_resource type="Texture2D" uid="uid://bnx4qusf3l2sk" path="res://sword/sword_swing.png" id="2_q003i"]
+[ext_resource type="Script" path="res://sword/sword.gd" id="1_a1xff"]
+[ext_resource type="Texture2D" uid="uid://ubca3qyue5g0" path="res://sword/katana.png" id="2_07jtr"]
 [ext_resource type="Script" path="res://nodes/Hitbox.gd" id="3_knd82"]
 
 [sub_resource type="Animation" id="Animation_s1oh5"]
@@ -54,6 +54,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weaponPivot/Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(122, -31.3333)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weaponPivot/Sprite2D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ldl4c"]
 resource_name = "idle"
@@ -105,11 +129,35 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weaponPivot/Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0796233, -0.123222, -0.0796233]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weaponPivot/Sprite2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(123.333, -32.6667), Vector2(120, -38), Vector2(123.333, -32.6667)]
+}
 
 [sub_resource type="Animation" id="Animation_1isax"]
 resource_name = "swing"
-length = 0.25
-step = 0.05
+length = 0.28
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -117,46 +165,46 @@ tracks/0/path = NodePath("weaponPivot/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0, 1, 2, 3, 4]
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.22, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("weaponPivot/Sprite2D/Hitbox:position")
+tracks/1/path = NodePath("weaponPivot/Sprite2D/Hitbox/SwordCollider:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-30, -35), Vector2(8, -24), Vector2(24, 10), Vector2(8, 45), Vector2(8, 45)]
+"times": PackedFloat32Array(0.1, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("weaponPivot/Sprite2D/Hitbox:rotation")
+tracks/2/path = NodePath("weaponPivot/Sprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.22, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.779832, 1.57743, 2.35348, 2.35348]
+"values": [Vector2(122, -31.3333), Vector2(106, -70.6667), Vector2(166, 4), Vector2(161.333, 62), Vector2(134, 95.3333), Vector2(99.3333, 116), Vector2(122, -31.3333)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("weaponPivot/Sprite2D/Hitbox/SwordCollider:disabled")
+tracks/3/path = NodePath("weaponPivot/Sprite2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.22, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.224992, 0.411173, 1.41543, 1.62167, 1.97807, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a1cq6"]
@@ -167,8 +215,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s8l2k"]
-radius = 7.77874
-height = 60.81
+radius = 2.26727
+height = 31.4317
 
 [node name="Sword" type="Area2D"]
 scale = Vector2(1.5, 1.5)
@@ -186,8 +234,8 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="weaponPivot"]
 texture_filter = 1
 position = Vector2(122, -31.3333)
-scale = Vector2(1.67333, 1.80667)
-texture = ExtResource("2_q003i")
+scale = Vector2(3.05706, 3.30067)
+texture = ExtResource("2_07jtr")
 vframes = 5
 
 [node name="Hitbox" type="Area2D" parent="weaponPivot/Sprite2D"]
@@ -197,7 +245,8 @@ collision_mask = 0
 script = ExtResource("3_knd82")
 
 [node name="SwordCollider" type="CollisionShape2D" parent="weaponPivot/Sprite2D/Hitbox"]
-position = Vector2(-2.38419e-07, -7.15256e-07)
+position = Vector2(32.7888, 31.3099)
+rotation = 0.785128
 shape = SubResource("CapsuleShape2D_s8l2k")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
