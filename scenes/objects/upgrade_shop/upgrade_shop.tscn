@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw6adjsonjx0n"]
+
+[ext_resource type="Script" path="res://scenes/objects/upgrade_shop/upgrade_shop.gd" id="1_fdvo3"]
+[ext_resource type="PackedScene" uid="uid://b6eccuod1e4v2" path="res://scenes/objects/InteractionArea/interaction_area.tscn" id="2_vp1ag"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwrud"]
+radius = 24.0
+
+[node name="UpgradeShop" type="Node2D"]
+script = ExtResource("1_fdvo3")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_vp1ag")]
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_kwrud")

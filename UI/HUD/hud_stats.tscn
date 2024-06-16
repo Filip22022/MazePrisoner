@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuhl33a6w85u5"]
+
+[ext_resource type="Script" path="res://UI/HUD/hud_stats.gd" id="1_jvi0r"]
+
+[node name="HudStats" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_jvi0r")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 175.0
+offset_bottom = 121.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -38.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Health" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Health"
+
+[node name="HealthValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Speed" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Speed"
+
+[node name="SpeedValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Damage" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Damage"
+
+[node name="DamageValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_bottom = 122.0
+grow_horizontal = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="Label" parent="Panel2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Coins"
+
+[node name="CoinsValue" type="Label" parent="Panel2/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel2/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Size" type="Label" parent="Panel2/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Maze size"
+
+[node name="SizeValue" type="Label" parent="Panel2/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1

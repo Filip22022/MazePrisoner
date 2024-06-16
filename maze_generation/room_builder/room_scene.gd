@@ -1,13 +1,12 @@
 class_name RoomScene
 extends Scene
 
-var default_spawn: Marker2D
+@onready var default_spawn: Marker2D = Marker2D.new()
 
 func _ready():
 	var doors = get_tree().get_nodes_in_group("doors")
 	for door in doors:
 		door.entered.connect(_on_transition_area_transition_entered)
-		
 		
 
 func room_cleared():

@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var _animation_player = $StaticBody2D/AnimationPlayer
 @onready var _transition_area = $RoomTransitionArea
+@onready var _door_dollision_shape = $StaticBody2D/DoorShape
 
 @export var direction: Directions.Direction
 
@@ -14,11 +15,11 @@ func _ready():
 
 func open():
 	_animation_player.play("door_opening")
-	%DoorShape.disabled = true
+	_door_dollision_shape.disabled = true
 	
 func close():
 	_animation_player.play("door_closing")
-	%DoorShape.disabled = false
+	_door_dollision_shape.disabled = false
 
 func door_entered():
 	entered.emit(self.direction)
