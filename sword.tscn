@@ -184,6 +184,7 @@ libraries = {
 [node name="weaponPivot" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="weaponPivot"]
+texture_filter = 1
 position = Vector2(122, -31.3333)
 scale = Vector2(1.67333, 1.80667)
 texture = ExtResource("2_q003i")

@@ -10,14 +10,12 @@ enum  StatNames {
 	health,
 	speed,
 	damage,
-	coins
 }
 
 var Stats = {
 	StatNames.health: {"base_value": 10, "current_value": 10, "multiplier": 10},
 	StatNames.speed: {"base_value": 10, "current_value": 10, "multiplier": 30},
 	StatNames.damage: {"base_value": 10, "current_value": 10, "multiplier": 1},
-	StatNames.coins: {"base_value": 0, "current_value": 0, "multiplier": 1},
 }
 
 
@@ -44,5 +42,11 @@ func downgrade(stat_name: StatNames):
 		Stats[stat_name]["current_value"] -= 1
 	stats_changed.emit()
 		
-func get_coins(amount: int):
-	Stats[StatNames.coins]["current_value"] += amount*Stats[StatNames.coins]["multiplier"] 
+func get_coins():
+	return coins
+
+func earn_coins(amount: int):
+	coins += amount
+	
+func pay_coins(amount: int):
+	coins -= amount

@@ -20,5 +20,5 @@ func update():
 	health_label.text = str(PlayerInfo.get_stat(PlayerInfo.StatNames.health))
 	speed_label.text = str(PlayerInfo.get_stat(PlayerInfo.StatNames.speed))
 	damage_label.text = str(PlayerInfo.get_stat(PlayerInfo.StatNames.damage))
-	coins_label.text = str(PlayerInfo.get_stat(PlayerInfo.StatNames.coins))
 	maze_size_label.text = str(GameState.maze_size*GameState.maze_size)
+	coins_label.text = str(PlayerInfo.get_coins())
