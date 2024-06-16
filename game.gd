@@ -4,7 +4,8 @@ extends Node2D
 @onready var ui_manager = $UIManager
 
 func _ready():
-	scene_manager.run_ended.connect(end_run)
+	scene_manager.run_ended_won.connect(win_run)
+	scene_manager.run_ended_lost.connect(end_run)
 	scene_manager.run_started.connect(start_run)
 	ui_manager.exit_game.connect(exit_game)
 
@@ -26,3 +27,8 @@ func end_game():
 
 func exit_game():
 	get_tree().quit()
+	
+func win_run():
+	GameState.enlarge_maze()
+	PlayerInfo.get_coins(GameState.maze_size)
+	end_run()

@@ -11,11 +11,14 @@ var isPaused: bool = false:
 		get_tree().paused = isPaused
 @onready var timer = $GameTimer
 @onready var pause_menu
+@onready var stats_hud
 
 func _ready():
 	timer.hide()
 	pause_menu = load("res://UI/pause_menu/pause_menu.tscn").instantiate()
 	add_child(pause_menu)
+	stats_hud = load("res://UI/HUD/hud_stats.tscn").instantiate()
+	add_child(stats_hud)
 	
 	pause_menu.resume.connect(toggle_pause_menu)
 	pause_menu.exit_game.connect(on_game_exit)
@@ -28,8 +31,10 @@ func toggle_pause_menu():
 	isPaused = !isPaused
 	if isPaused:
 		pause_menu.show()
+		stats_hud.show_menu()
 	else:
 		pause_menu.hide()
+		stats_hud.hide_menu()
 	
 func start_game():
 	pass

@@ -1,7 +1,8 @@
 class_name SceneManager
 extends Node2D
 
-signal run_ended
+signal run_ended_won
+signal run_ended_lost
 signal run_started
 
 var _current_scene: Scene = null
@@ -12,7 +13,7 @@ var _current_room: MazeRoom
 
 func _ready():
 	_current_scene = $StartMenu
-	_player_manager.player_death.connect(func(): run_ended.emit())
+	_player_manager.player_death.connect(func(): run_ended_lost.emit())
 	
 func start_game():
 	_enter_hub()
@@ -24,6 +25,7 @@ func start_run_deferred():
 func _start_run():
 	GameState.start_run()
 	
+	$MazeGenerator.size = GameState.maze_size
 	_rooms = $MazeGenerator.generate_maze()
 	var starting_room: MazeRoom = $MazeGenerator.get_starting_room()
 	_current_room = starting_room
@@ -52,7 +54,7 @@ func _change_room(direction: Directions.Direction):
 	_change_scene(_current_room.get_room_scene())
 	
 	if _current_room.is_final:
-		_current_scene.game_won.connect(func(): run_ended.emit())
+		_current_scene.game_won.connect(func(): run_ended_won.emit())
 	
 	_current_scene.initialize(Directions.opposite(direction))
 	_current_scene.open_doors()

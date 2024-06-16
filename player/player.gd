@@ -19,13 +19,13 @@ func _physics_process(delta):
 			start_dash()
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	self.velocity = direction * PlayerInfo.get_stat(PlayerInfo.StatNames.speed)
+	self.velocity = direction * PlayerInfo.get_stat_value(PlayerInfo.StatNames.speed)
 	if is_dashing():
 		self.velocity *= 5 * pow(dash.time_left,1)
 	move_and_slide()
 	
 func update_stats():
-	self.max_health = PlayerInfo.get_stat(PlayerInfo.StatNames.health)
+	self.max_health = PlayerInfo.get_stat_value(PlayerInfo.StatNames.health)
 			
 func take_damage(amount: float):
 	_change_health(-amount)
