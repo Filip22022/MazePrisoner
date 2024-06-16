@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://b45la76gpqvta"]
+
+[ext_resource type="Script" path="res://maze_generation/room_builder/door/door.gd" id="1_e11bv"]
+[ext_resource type="Texture2D" uid="uid://cqgwha2ddlx43" path="res://maze_generation/room_builder/door/Sliding Door.png" id="2_80u62"]
+[ext_resource type="Script" path="res://scenes/objects/room_transition_area.gd" id="3_wx5ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2om"]
+size = Vector2(24, 33.5)
+
+[sub_resource type="Animation" id="Animation_mput1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wui4q"]
+resource_name = "door_closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7yp4s"]
+resource_name = "door_closing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_aycqc"]
+resource_name = "door_opened"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_1eup7"]
+resource_name = "door_opening"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvlqo"]
+_data = {
+"RESET": SubResource("Animation_mput1"),
+"door_closed": SubResource("Animation_wui4q"),
+"door_closing": SubResource("Animation_7yp4s"),
+"door_opened": SubResource("Animation_aycqc"),
+"door_opening": SubResource("Animation_1eup7")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_affop"]
+
+[node name="Door" type="Node2D"]
+z_index = 3
+script = ExtResource("1_e11bv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_80u62")
+vframes = 10
+
+[node name="DoorShape" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_om2om")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_jvlqo")
+}
+
+[node name="RoomTransitionArea" type="Area2D" parent="."]
+script = ExtResource("3_wx5ui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTransitionArea"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_affop")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyw0mgn7477td"
-path="res://.godot/imported/player_sprite.png-32a0d6c61954787984dbda68ae6f2575.ctex"
+uid="uid://cqgwha2ddlx43"
+path="res://.godot/imported/Sliding Door.png-6294f636b4769baf5b23edd15126f7c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/player_sprite.png"
-dest_files=["res://.godot/imported/player_sprite.png-32a0d6c61954787984dbda68ae6f2575.ctex"]
+source_file="res://maze_generation/room_builder/door/Sliding Door.png"
+dest_files=["res://.godot/imported/Sliding Door.png-6294f636b4769baf5b23edd15126f7c6.ctex"]
 
 [params]
 
