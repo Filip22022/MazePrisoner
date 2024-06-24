@@ -4,6 +4,7 @@ extends Node2D
 signal run_ended_won
 signal run_ended_lost
 signal run_started
+signal game_start
 
 var _current_scene: Scene = null
 var _rooms = []
@@ -13,6 +14,7 @@ var _current_room: MazeRoom
 
 func _ready():
 	_current_scene = $StartMenu
+	_current_scene.start_game.connect(func(): game_start.emit())
 	_player_manager.player_death.connect(func(): run_ended_lost.emit())
 	
 func start_game():
