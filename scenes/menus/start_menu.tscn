@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsq8kcfy5acg5"]
+[gd_scene load_steps=3 format=3 uid="uid://bsq8kcfy5acg5"]
 
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_bhxf0"]
+[ext_resource type="Theme" uid="uid://c0mexcasjijkf" path="res://assets/default.tres" id="2_5kh51"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_bhxf0")
@@ -17,6 +18,7 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_5kh51")
 text = "Start"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

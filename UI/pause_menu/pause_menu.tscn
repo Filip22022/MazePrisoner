@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bljpfpop31amj"]
+[gd_scene load_steps=3 format=3 uid="uid://bljpfpop31amj"]
 
 [ext_resource type="Script" path="res://UI/pause_menu/pause_menu.gd" id="1_1546d"]
+[ext_resource type="Theme" uid="uid://c0mexcasjijkf" path="res://assets/default.tres" id="1_sbjme"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_sbjme")
 script = ExtResource("1_1546d")
 
 [node name="Panel" type="Panel" parent="."]
