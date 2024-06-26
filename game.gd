@@ -7,9 +7,7 @@ func _ready():
 	scene_manager.run_ended_won.connect(win_run)
 	scene_manager.run_ended_lost.connect(loose_run)
 	scene_manager.run_started.connect(start_run)
-	scene_manager.game_start.connect(start_game)
 	ui_manager.exit_game.connect(exit_game)
-	ui_manager.game_restarted.connect(restart_game)
 
 func start_game():
 	scene_manager.start_game()
@@ -29,11 +27,6 @@ func end_run():
 func end_game():
 	scene_manager.end_game.call_deferred()
 	ui_manager.end_game.call_deferred()
-	
-func restart_game():
-	GameState.restart()
-	PlayerInfo.restart()
-	get_tree().reload_current_scene()
 
 func exit_game():
 	get_tree().quit()

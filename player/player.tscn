@@ -418,8 +418,8 @@ position = Vector2(-7.15256e-07, 0)
 shape = SubResource("CapsuleShape2D_5xh3s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(2.0223, 0.707917)
-zoom = Vector2(2, 2)
+scale = Vector2(0.707917, 0.707917)
+zoom = Vector2(2.5, 2.5)
 position_smoothing_speed = 30.0
 
 [node name="dash_timer" type="Timer" parent="."]
