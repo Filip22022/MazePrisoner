@@ -2,6 +2,8 @@ class_name UIManager
 extends CanvasLayer
 
 signal exit_game
+signal game_restarted
+
 
 var isPaused: bool = false:
 	get:
@@ -22,6 +24,7 @@ func _ready():
 	
 	pause_menu.resume.connect(toggle_pause_menu)
 	pause_menu.exit_game.connect(on_game_exit)
+	pause_menu.restart_game.connect(restart_game)
 	
 func _input(event):
 	if(event.is_action_pressed("pause")):
@@ -45,6 +48,11 @@ func start_run():
 
 func end_game():
 	pass
+		
+func restart_game():
+	if isPaused:
+		toggle_pause_menu()	
+	game_restarted.emit()
 	
 func end_run():
 	timer.stop()
