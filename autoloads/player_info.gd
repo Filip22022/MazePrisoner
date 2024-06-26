@@ -18,10 +18,6 @@ var Stats = {
 	StatNames.damage: {"base_value": 10, "current_value": 10, "multiplier": 1},
 }
 
-func restart():
-	for stat_name in StatNames.values():
-		Stats[stat_name]["current_value"] = Stats[stat_name]["base_value"]
-	coins = 0
 
 func get_player():
 	if self.player_reference:

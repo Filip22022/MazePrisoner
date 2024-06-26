@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuhl33a6w85u5"]
+[gd_scene load_steps=3 format=3 uid="uid://cuhl33a6w85u5"]
 
 [ext_resource type="Script" path="res://UI/HUD/hud_stats.gd" id="1_jvi0r"]
+[ext_resource type="Theme" uid="uid://c0mexcasjijkf" path="res://assets/default.tres" id="2_lmxke"]
 
 [node name="HudStats" type="CanvasLayer"]
 process_mode = 3
@@ -9,6 +10,7 @@ script = ExtResource("1_jvi0r")
 [node name="Panel" type="Panel" parent="."]
 offset_right = 175.0
 offset_bottom = 121.0
+theme = ExtResource("2_lmxke")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -71,6 +73,7 @@ anchor_right = 1.0
 offset_left = -175.0
 offset_bottom = 122.0
 grow_horizontal = 0
+theme = ExtResource("2_lmxke")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel2"]
 layout_mode = 1
