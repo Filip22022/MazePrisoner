@@ -10,6 +10,7 @@ var _current_scene: Scene = null
 var _rooms = []
 var _current_room: MazeRoom
 @onready var _player_manager = $PlayerManager
+@onready var _enemy_manager = $EnemyManager
 
 
 func _ready():
@@ -61,6 +62,8 @@ func _change_room(direction: Directions.Direction):
 	_current_scene.initialize(Directions.opposite(direction))
 	_current_scene.open_doors()
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
+	var a = randi_range(1,min(GameState.maze_size-3,7))
+	_enemy_manager.spawn_enemies(a)
 	
 func _deferred_change_scene(scene: Scene):
 	call_deferred("_change_scene", scene)
@@ -71,7 +74,7 @@ func _change_scene(scene: Scene):
 		_current_scene.scene_change_requested.disconnect(_deferred_change_scene)
 		remove_child(_current_scene)
 		_player_manager.remove_player()
-			
+		_enemy_manager.clear_enemies()
 	_current_scene = scene
 	add_child(_current_scene)
 	

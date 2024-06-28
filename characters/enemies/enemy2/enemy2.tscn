@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c71rjr71opqes"]
+[gd_scene load_steps=8 format=3 uid="uid://dw2g2sykb6d7e"]
 
-[ext_resource type="Script" path="res://characters/enemies/enemy1/enemy1.gd" id="1_d34l8"]
-[ext_resource type="Texture2D" uid="uid://ciilr06ta6fj6" path="res://characters/enemies/enemy1/enemy_sprite.png" id="2_yn107"]
-[ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_y7slr"]
-[ext_resource type="Script" path="res://nodes/Hitbox.gd" id="4_hp7o6"]
+[ext_resource type="Script" path="res://characters/enemies/enemy2/enemy2.gd" id="1_od005"]
+[ext_resource type="Texture2D" uid="uid://cqwx3lhx8ampg" path="res://characters/enemies/enemy2/enemy_sprite.png" id="2_g1coa"]
+[ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_npe1e"]
+[ext_resource type="Script" path="res://nodes/Hitbox.gd" id="4_141lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ptj"]
 size = Vector2(64, 56)
@@ -17,11 +17,11 @@ size = Vector2(39.9698, 64)
 [node name="Enemy1" type="CharacterBody2D"]
 z_index = 5
 scale = Vector2(0.680001, 0.640001)
-script = ExtResource("1_d34l8")
+script = ExtResource("1_od005")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
-texture = ExtResource("2_yn107")
+texture = ExtResource("2_g1coa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)
@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_x1ptj")
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_y7slr")
+script = ExtResource("3_npe1e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, -18)
@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_kwse3")
 scale = Vector2(1.11765, 1.125)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("4_hp7o6")
+script = ExtResource("4_141lr")
 damage = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

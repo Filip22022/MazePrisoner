@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bllyxba1mtyle"]
+[gd_scene load_steps=8 format=3 uid="uid://bllyxba1mtyle"]
 
 [ext_resource type="Texture2D" uid="uid://e0xt7vux6hty" path="res://assets/New Piskel.png" id="1_5iqcq"]
-[ext_resource type="Texture2D" uid="uid://dwberc1o4q1mb" path="res://assets/walls.png" id="1_uaojo"]
+[ext_resource type="Texture2D" uid="uid://ceph30m8v2b6m" path="res://assets/walls.png" id="1_uaojo"]
 [ext_resource type="Script" path="res://maze_generation/MazeGenerator.gd" id="2_oiahr"]
-[ext_resource type="Texture2D" uid="uid://cb3808145u41j" path="res://assets/TX Props.png" id="2_qhi5r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5k08q"]
 texture = ExtResource("1_5iqcq")
@@ -25,7 +24,6 @@ texture_region_size = Vector2i(32, 32)
 0:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8bsvk"]
-texture = ExtResource("2_qhi5r")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
