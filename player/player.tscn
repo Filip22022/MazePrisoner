@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_g7hg3"]
 [ext_resource type="Texture2D" uid="uid://u75rp1fg0avd" path="res://player/run.png" id="2_eqesw"]
 [ext_resource type="Texture2D" uid="uid://cstk1kx5x53oj" path="res://player/idle.png" id="3_b3j7x"]
-[ext_resource type="PackedScene" uid="uid://bavgw8hew7hmh" path="res://sword/sword.tscn" id="3_brsre"]
+[ext_resource type="PackedScene" path="res://sword/sword.tscn" id="3_brsre"]
 [ext_resource type="Script" path="res://nodes/Hurtbox.gd" id="3_y2d3n"]
 
 [sub_resource type="Animation" id="Animation_era7m"]

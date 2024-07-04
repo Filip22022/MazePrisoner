@@ -8,7 +8,7 @@ var cel
 var ile: int = 0
 
 func _init():
-	self.health = 50.0
+	self.health = PlayerInfo.get_stat(PlayerInfo.StatNames.damage)*3
 
 func _process(delta):
 	timer += delta

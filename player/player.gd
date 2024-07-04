@@ -66,6 +66,8 @@ func _change_health(amount: float):
 	
 	if current_health <= 0.0:
 		health_depleted.emit()
+		GameState.maze_size = 3
+		PlayerInfo.restart()
 
 func start_dash():
 	dash.wait_time = dash_length

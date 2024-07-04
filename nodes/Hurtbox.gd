@@ -10,5 +10,9 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 		return
 	print(hitbox.get_parent().name)
 	if owner.has_method("take_damage"):
-		owner.take_damage(hitbox.damage)
+		if hitbox.get_parent().name == 'Sprite2D':
+			var dmg = PlayerInfo.get_stat_value(PlayerInfo.StatNames.damage)
+			owner.take_damage(dmg)
+		else:
+			owner.take_damage(hitbox.damage * round((GameState.maze_size / 3)))
 

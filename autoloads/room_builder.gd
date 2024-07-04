@@ -76,7 +76,8 @@ func build_final_room(directions):
 	
 	var script = load("res://maze_generation/room_builder/final_room_scene.gd")
 	room.set_script(script)
-	
+	var killenemies = load("res://characters/enemies/enemy_manager.gd")
+	killenemies.clear_enemies()
 	
 	var exit = load("res://scenes/objects/exit/maze_exit.tscn").instantiate()
 	exit.global_position = Vector2i(0,0)

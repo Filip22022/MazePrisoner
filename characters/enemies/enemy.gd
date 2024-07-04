@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal enemydie
+
 var health: float
 
 func take_damage(damage: float):
@@ -10,4 +12,5 @@ func take_damage(damage: float):
 		
 
 func die():
+	GameState.many_enemies -= 1
 	queue_free()

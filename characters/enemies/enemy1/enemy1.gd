@@ -3,7 +3,7 @@ extends Enemy
 var speed = 100
 
 func _init():
-	self.health = 10.0
+	self.health = 5*GameState.maze_size
 
 func _process(delta):
 	var player = PlayerInfo.get_player()

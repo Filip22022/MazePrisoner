@@ -7,7 +7,7 @@ var kierunek
 var ile: int = 0
 
 func _init():
-	self.health = 50.0
+	self.health = (GameState.maze_size - 2) * (GameState.maze_size-1)
 
 func _process(delta):
 	var player = PlayerInfo.get_player()

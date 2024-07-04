@@ -26,7 +26,7 @@ func _create_player():
 	self.player.health_depleted.connect(func(): player_death.emit())
 
 func reset_player():
-	self.player.heal(100.0)
+	self.player.heal(1000.0)
 	
 func remove_player():
 	if self.player:

@@ -53,17 +53,18 @@ func _deferred_change_room(direction: Directions.Direction):
 func _change_room(direction: Directions.Direction):
 	var new_room = _current_room.connected_rooms[direction]
 	_current_room = new_room
-	
 	_change_scene(_current_room.get_room_scene())
-	
-	if _current_room.is_final:
-		_current_scene.game_won.connect(func(): run_ended_won.emit())
-	
 	_current_scene.initialize(Directions.opposite(direction))
 	_current_scene.open_doors()
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
-	var a = randi_range(1,min(GameState.maze_size-3,7))
+	if _current_room.is_final:
+		_current_scene.game_won.connect(func(): run_ended_won.emit())
+		return
+	var a = randi_range(1,min(GameState.maze_size*2-4,7))
 	_enemy_manager.spawn_enemies(a)
+	GameState.many_enemies = a
+	_current_scene.close_doors()
+	
 	
 func _deferred_change_scene(scene: Scene):
 	call_deferred("_change_scene", scene)
@@ -86,4 +87,5 @@ func _enter_hub():
 	hub_room_scene.run_started.connect(func(): run_started.emit())
 	_change_scene(hub_room_scene)
 	_player_manager.spawn_player(_current_scene.get_player_spawn())
-	
+	_player_manager.reset_player()
+	#_player_manager.reset_player()

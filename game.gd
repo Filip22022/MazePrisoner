@@ -26,6 +26,7 @@ func start_run():
 	ui_manager.start_run()
 	
 func loose_run():
+	
 	end_run()
 	
 func end_run():

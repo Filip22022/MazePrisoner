@@ -2,6 +2,7 @@ extends Node
 
 var run_in_progress: bool
 var maze_size: int = 3
+var many_enemies: int = 0
 
 func _init():
 	run_in_progress = false
