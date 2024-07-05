@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsq8kcfy5acg5"]
+[gd_scene load_steps=4 format=3 uid="uid://bsq8kcfy5acg5"]
 
 [ext_resource type="Script" path="res://scenes/menus/start_menu.gd" id="1_bhxf0"]
-[ext_resource type="Theme" uid="uid://c0mexcasjijkf" path="res://assets/default.tres" id="2_5kh51"]
+[ext_resource type="Theme" uid="uid://cr8hn3s4l6f75" path="res://assets/default.tres" id="2_5kh51"]
+[ext_resource type="Texture2D" uid="uid://dwuhx1thp0sph" path="res://assets/TitleSide.png" id="2_hng17"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_bhxf0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(621, 400)
+scale = Vector2(1.81192, 1.55833)
+texture = ExtResource("2_hng17")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 144.0
