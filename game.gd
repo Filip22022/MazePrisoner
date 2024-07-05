@@ -26,16 +26,16 @@ func start_run():
 	ui_manager.start_run()
 	
 func loose_run():
-	
-	end_run()
-	
+	end_game()
+
 func end_run():
 	scene_manager.end_run()
 	ui_manager.end_run()
 
 func end_game():
-	scene_manager.end_game.call_deferred()
-	ui_manager.end_game.call_deferred()
+	restart_game()
+	#scene_manager.end_game.call_deferred()
+	#ui_manager.end_game.call_deferred()
 
 func exit_game():
 	get_tree().quit()

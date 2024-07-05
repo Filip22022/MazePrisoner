@@ -13,7 +13,7 @@ enum  StatNames {
 }
 
 var Stats = {
-	StatNames.health: {"base_value": 200, "current_value": 200, "multiplier": 10},
+	StatNames.health: {"base_value": 100, "current_value": 100, "multiplier": 10},
 	StatNames.speed: {"base_value": 20, "current_value": 20, "multiplier": 10},
 	StatNames.damage: {"base_value": 10, "current_value": 10, "multiplier": 2},
 }
